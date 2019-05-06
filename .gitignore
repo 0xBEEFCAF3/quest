@@ -1,0 +1,6 @@
+tftp/
+kernel/tmpproto
+kernel/quest
+kernel/quest.iso
+kernel/grub2pxe
+.vscode
