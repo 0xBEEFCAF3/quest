@@ -4,7 +4,10 @@
 OPT = 0
 
 # Disable SMP
-# CFG += -DNO_SMP
+CFG += -DNO_SMP
+
+# Compile for ARM
+CFG += -DARM_SPEC
 
 # Disable "logger" thread
 # CFG += -DNO_LOGGER
