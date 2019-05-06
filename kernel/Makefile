@@ -1,9 +1,14 @@
 include config.mk
+ARCH=armv7
 GRUBLIB = grub/x86_64-pc
 GRUB2 = grub2
 TFTPDIR=tftp
 LD = ld -melf_i386
-CC = gcc
+ifeq ($(ARCH),armv7)
+	CC = gcc
+else
+	CC = arm-none-eabi-gcc
+endif
 TAR = tar
 ATSCC = atscc 
 ATSOPT = atsopt
@@ -171,6 +176,9 @@ endef
 $(foreach obj,$(ACPI_OBJS),$(eval $(call ACPI_template,$(obj))))
 
 netboot: quest.iso
+ifeq ($(ARCH),armv7)
+	# Arm specific stuff here
+endif
 	mkdir -p $(TFTPDIR)/boot/grub
 	cp quest sysprogs/shell $(TFTPDIR)/boot
 	cp netboot/grub.cfg $(TFTPDIR)/boot/grub
