@@ -9,6 +9,11 @@ CFG += -DNO_SMP
 # Compile for ARM
 CFG += -DARM_SPEC
 
+# Get rid of Quest-V for now
+CFG += -DNO_QUESTV
+
+# Disable USB Support: ARM Specific 
+CFG += -DNO_USB
 # Disable "logger" thread
 # CFG += -DNO_LOGGER
 
@@ -16,7 +21,7 @@ CFG += -DARM_SPEC
 # CFG += -DNO_ACPI
 
 # Disable Intel Multiprocessor Specification parsing
-# CFG += -DNO_INTEL_MPS
+#CFG += -DNO_INTEL_MPS
 
 # Use VMX-based virtual machines for isolation
 # CFG += -DUSE_VMX

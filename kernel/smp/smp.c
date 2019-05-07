@@ -283,8 +283,9 @@ ap_init (void)
   hw_ltr (cpuTSS_selector[phys_id]);
 
   /* Initialize virtual machine per-processor infrastructure */
+  #ifndef NO_SMP
   { void vmx_processor_init (void); vmx_processor_init (); }
-
+  #endif
   /* The IDLE task runs in kernelspace, therefore it is capable of
    * unlocking the kernel and manually enabling interrupts.  This
    * makes it safe to use lock_kernel() above.  */

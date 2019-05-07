@@ -415,9 +415,9 @@ vcpu_dump_stats (void)
   u64 idle_time = percpu_read64 (pcpu_idle_time);
   u64 sum = idle_time;
   u32 stime = percpu_read (pcpu_sched_time);
-  extern u32 uhci_sample_bps (void);
+  //extern u32 uhci_sample_bps (void);
   extern u32 atapi_sample_bps (void);
-  u32 uhci_bps = uhci_sample_bps ();
+  //u32 uhci_bps = uhci_sample_bps ();
   u32 atapi_bps = atapi_sample_bps ();
   u64 now; RDTSC (now);
 
@@ -428,10 +428,10 @@ vcpu_dump_stats (void)
   RDTSC (vcpu_init_time);
 
   u32 sched = compute_percentage (now, stime);
-  logger_printf ("  overhead=0x%llX sched=%02d.%02d uhci_bps=%d atapi_bps=%d\n",
-                 overhead,
-                 sched >> 16, sched & 0xFF,
-                 uhci_bps, atapi_bps);
+  // logger_printf ("  overhead=0x%llX sched=%02d.%02d uhci_bps=%d atapi_bps=%d\n",
+  //                overhead,
+  //                sched >> 16, sched & 0xFF,
+  //                uhci_bps, atapi_bps);
 #define DUMP_CACHE_STATS
 #ifdef DUMP_CACHE_STATS
   vcpu *queue = percpu_read (vcpu_queue);

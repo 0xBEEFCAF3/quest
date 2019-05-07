@@ -61,8 +61,12 @@ devread_vfat (int sector, int byte_offset, int byte_len, char *buf)
   DLOG ("fsys_vfat: devread_vfat (%d, %d, %d, %p)",
         sector, byte_offset, byte_len, buf);
   while (len > 0) {
-    if (umsc_read_sector (UMSC_DEVICE_INDEX, sector, s, sizeof (s)) != sizeof (s))
+    #ifndef NO_USB
+    if (umsc_read_sector (UMSC_DEVICE_INDEX, sector, s, sizeof (s)) != sizeof (s)) {
       return 0;
+    }
+    #endif
+    // NO USB only
     int seclen;
     if (len > sizeof (s) - byte_offset)
       seclen = sizeof (s) - byte_offset;

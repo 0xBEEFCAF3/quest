@@ -1,21 +1,20 @@
 include config.mk
 ARCH=armv7
+PREFIX=
 GRUBLIB = grub/x86_64-pc
 GRUB2 = grub2
 TFTPDIR=tftp
-LD = ld -melf_i386
+LD = $(PREFIX)ld -melf_i386
 # ifeq ($(ARCH),armv7)
-# 	CC = gcc-4.9
+# 	CC = gcc-4.8
 # else
 # 	CC = arm-none-eabi-gcc
 # endif
-CC = gcc
+CC = $(PREFIX)gcc-4.8 # gcc-4.8 -- used as a litmus test
 TAR = tar
-ATSCC = atscc 
-ATSOPT = atsopt
-CFLAGS = -m32 -march=i586 -fno-builtin -fno-stack-protector -fno-strict-aliasing -fno-delete-null-pointer-checks -nostdinc -g -Wall -Wno-attributes -O$(OPT) $(CFG) $(EXTRA_CFLAGS)
+CFLAGS = -m32 -march=i586 -fno-builtin -fno-stack-protector -fno-strict-aliasing -fno-delete-null-pointer-checks -g -Wall -Wno-attributes -O$(OPT) $(CFG) $(EXTRA_CFLAGS)
+#CFLAGS= -mcpu=$(CPU) -fpic -ffreestanding -fno-builtin -fno-stack-protector -fno-strict-aliasing -fno-delete-null-pointer-checks -g -Wall -Wno-attributes $(DIRECTIVES) -O$(OPT) $(CFG) $(EXTRA_CFLAGS)
 CPPFLAGS = -D_QUEST -Wa,--32 -MMD -Iinclude -Iinclude/drivers/acpi -I. -I../libc/include 
-ATSFLAGS = -IATS include -I. -Iinclude -Iinclude/drivers/acpi -I../libc/include -g -O$(OPT) -D_ATS_PRELUDE_NONE -D_ATS_DYNLOADFUN_NONE -D_ATS_STALOADFUN_NONE -DATS_TYPES_H -DATS_EXCEPTION_H -DATS_MEMORY_H -D_QUEST
 INDENT = indent
 INDENTFLAGS = -gnu -br -ce --no-tabs
 
@@ -28,6 +27,12 @@ PROGS = quest \
 	tests/test3 tests/test4 tests/test5 tests/test6 tests/test7
 
 ##################################################
+#	drivers/usb/usb.o drivers/usb/enumeration.o \
+#	drivers/usb/usb_tests.o \
+#	drivers/usb/rtl8187b.o \
+#	drivers/usb/ftdi.o drivers/usb/pl2303.o \
+#	drivers/usb/hub.o drivers/usb/net.o drivers/usb/asix.o \
+#	drivers/usb/uhci_hcd.o drivers/usb/uvc.o drivers/usb/umsc.o \
 
 OBJS =  boot/boot.o boot/init.o kernel.o module/loader.o \
 	interrupt.o interrupt_handler.o \
@@ -54,12 +59,6 @@ OBJS =  boot/boot.o boot/init.o kernel.o module/loader.o \
 	drivers/sb16/sound.o \
 	drivers/acpi/quest-acpica.o \
 	drivers/eeprom/93cx6.o \
-	drivers/usb/uhci_hcd.o drivers/usb/uvc.o drivers/usb/umsc.o \
-	drivers/usb/hub.o drivers/usb/net.o drivers/usb/asix.o \
-	drivers/usb/ftdi.o drivers/usb/pl2303.o \
-	drivers/usb/rtl8187b.o \
-	drivers/usb/usb_tests.o \
-	drivers/usb/usb.o drivers/usb/enumeration.o \
 	kdb/i386-stub.o
 
 CFILES = $(patsubst %.o,%.c,$(OBJS))
@@ -185,7 +184,8 @@ endif
 	cp netboot/grub.cfg $(TFTPDIR)/boot/grub
 	cp $(GRUB2)/grub2pxe $(TFTPDIR)
 	$(TAR) -C $(TFTPDIR)/boot/grub -jxf $(GRUB2)/mods.tar.bz2
-
+	mv quest.iso tftp/
+	cp qemu.sh tftp/
 ##################################################
 # LWIP
 

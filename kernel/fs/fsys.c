@@ -73,6 +73,7 @@ vfs_dir (char *pathname)
     return ext2fs_dir (filepart);
   case VFS_FSYS_EZISO:
     return eziso_dir (filepart);
+  // Commented out by dharmesh to get working on ARM
   case VFS_FSYS_EZUSB:
     return vfat_dir (filepart);
   case VFS_FSYS_EZTFTP:
@@ -95,6 +96,7 @@ vfs_read (char *pathname, char *buf, int len)
     return ext2fs_read (buf, len);
   case VFS_FSYS_EZISO:
     return eziso_read (buf, len);
+  // Commented out by dharmesh
   case VFS_FSYS_EZUSB:
     return vfat_read (buf, len);
   case VFS_FSYS_EZTFTP:
@@ -127,6 +129,7 @@ vfs_init (void)
   case VFS_FSYS_EZUSB:
   default:
     printf ("ROOT: USB MASS STORAGE: VFAT\n");
+    // Commented out by dharmesh to get things working on ARM
     vfat_mount ();
     vfs_set_root (VFS_FSYS_EZUSB, NULL);
     break;
