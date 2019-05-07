@@ -360,6 +360,9 @@ parse_root_type (char *cmdline)
 
 u32 root_type, boot_device=0;
 
+// Multiboot-2 is a standard.
+// Convert uboot multiboot stuff to something GRUB might return
+
 void
 init (multiboot * pmb)
 {

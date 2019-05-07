@@ -4,12 +4,11 @@ GRUBLIB = grub/x86_64-pc
 GRUB2 = grub2
 TFTPDIR=tftp
 LD = ld -melf_i386
-# ifeq ($(ARCH),armv7)
-# 	CC = gcc-4.9
-# else
-# 	CC = arm-none-eabi-gcc
-# endif
-CC = gcc
+ifeq ($(ARCH),armv7)
+	CC = gcc
+else
+	CC = arm-none-eabi-gcc
+endif
 TAR = tar
 ATSCC = atscc 
 ATSOPT = atsopt
