@@ -1,0 +1,2 @@
+grub_jfs_init jfs
+grub_jfs_fini jfs

@@ -1,0 +1,2 @@
+grub_vga_fini vga
+grub_vga_init vga

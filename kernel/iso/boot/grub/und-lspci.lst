@@ -1,0 +1,6 @@
+lspci
+grub_unregister_extcmd
+grub_printf
+grub_pci_make_address
+grub_pci_iterate
+grub_register_extcmd

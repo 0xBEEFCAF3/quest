@@ -1,0 +1,4 @@
+bitmap_scale
+grub_video_bitmap_create
+grub_video_bitmap_destroy
+grub_error

@@ -1,0 +1,5 @@
+cmostest
+grub_register_command_prio
+grub_unregister_command
+grub_error
+grub_strtoul

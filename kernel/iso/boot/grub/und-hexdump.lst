@@ -1,0 +1,17 @@
+hexdump
+grub_strlen
+grub_strtoull
+grub_disk_open
+grub_snprintf
+grub_disk_read
+grub_unregister_extcmd
+grub_gzfile_open
+grub_disk_close
+grub_printf
+grub_file_read
+grub_strcmp
+grub_file_close
+grub_error
+grub_register_extcmd
+grub_memcmp
+grub_strtoul

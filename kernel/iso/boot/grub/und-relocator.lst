@@ -1,0 +1,6 @@
+relocator
+grub_realloc
+grub_memmove
+grub_malloc
+grub_real_dprintf
+grub_free

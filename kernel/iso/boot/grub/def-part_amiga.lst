@@ -1,0 +1,2 @@
+grub_part_amiga_init part_amiga
+grub_part_amiga_fini part_amiga

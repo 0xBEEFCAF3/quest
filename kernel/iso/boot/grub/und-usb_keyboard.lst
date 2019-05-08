@@ -1,0 +1,11 @@
+usb_keyboard
+grub_usb_control_msg
+grub_errno
+grub_term_inputs
+grub_printf
+grub_usb_iterate
+grub_term_inputs_disabled
+grub_get_time_ms
+grub_real_dprintf
+grub_list_remove
+grub_list_push

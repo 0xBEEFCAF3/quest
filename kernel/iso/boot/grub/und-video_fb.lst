@@ -1,0 +1,9 @@
+video_fb
+grub_video_get_blit_format
+grub_realloc
+grub_memmove
+grub_errno
+grub_memset
+grub_malloc
+grub_error
+grub_free

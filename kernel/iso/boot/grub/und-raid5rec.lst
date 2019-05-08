@@ -1,0 +1,8 @@
+raid5rec
+grub_disk_read
+grub_raid5_recover_func
+grub_errno
+grub_memset
+grub_raid_block_xor
+grub_malloc
+grub_free

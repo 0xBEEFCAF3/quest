@@ -1,0 +1,2 @@
+grub_usb_keyboard_fini usb_keyboard
+grub_usb_keyboard_init usb_keyboard

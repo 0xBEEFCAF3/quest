@@ -1,0 +1,2 @@
+grub_ls_init ls
+grub_ls_fini ls

@@ -1,0 +1,4 @@
+cpuid
+grub_unregister_extcmd
+grub_error
+grub_register_extcmd

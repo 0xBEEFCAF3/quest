@@ -1,0 +1,2 @@
+grub_get_datetime datetime
+grub_set_datetime datetime

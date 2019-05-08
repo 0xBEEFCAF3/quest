@@ -1,0 +1,4 @@
+grub_gcry_twofish_init gcry_twofish
+grub_gcry_twofish_fini gcry_twofish
+_gcry_cipher_spec_twofish gcry_twofish
+_gcry_cipher_spec_twofish128 gcry_twofish

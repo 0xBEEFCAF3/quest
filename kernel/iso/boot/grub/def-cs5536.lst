@@ -1,0 +1,8 @@
+grub_cs5536_smbus_wait cs5536
+grub_cs5536_find cs5536
+grub_cs5536_read_spd_byte cs5536
+grub_cs5536_init_smbus cs5536
+grub_cs5536_read_spd cs5536
+grub_cs5536_init_geode cs5536
+grub_cs5536_write_msr cs5536
+grub_cs5536_read_msr cs5536

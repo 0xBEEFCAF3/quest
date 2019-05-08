@@ -1,0 +1,2 @@
+grub_memrw_init memrw
+grub_memrw_fini memrw

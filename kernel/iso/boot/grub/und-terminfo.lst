@@ -1,0 +1,16 @@
+terminfo
+grub_strlen
+grub_realloc
+grub_memmove
+grub_strdup
+grub_snprintf
+grub_errno
+grub_memset
+grub_register_command_prio
+grub_printf
+grub_unregister_command
+grub_strcmp
+grub_get_time_ms
+grub_error
+grub_free
+grub_gettext

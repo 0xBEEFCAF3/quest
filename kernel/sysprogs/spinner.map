@@ -1,0 +1,78 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD sysprogs/spinner.o
+START GROUP
+LOAD ../libc/libc.a
+END GROUP
+                0x0000000000001074                . = (0x1000 + SIZEOF_HEADERS)
+
+.text           0x0000000000001074       0xbf
+ *(.text)
+ .text          0x0000000000001074       0xbf sysprogs/spinner.o
+                0x00000000000010a2                child
+                0x00000000000010e6                _start
+
+.iplt           0x0000000000001138        0x0
+ .iplt          0x0000000000001138        0x0 sysprogs/spinner.o
+
+.rodata
+ *(.rodata)
+
+.eh_frame       0x0000000000001134       0xac
+ .eh_frame      0x0000000000001134       0xac sysprogs/spinner.o
+
+.rel.dyn        0x00000000000011e0        0x0
+ .rel.got       0x00000000000011e0        0x0 sysprogs/spinner.o
+ .rel.iplt      0x00000000000011e0        0x0 sysprogs/spinner.o
+                0x00000000000021e0                . = DATA_SEGMENT_ALIGN (0x1000, 0x1000)
+
+.data           0x00000000000021e0        0x0
+ *(.data)
+ .data          0x00000000000021e0        0x0 sysprogs/spinner.o
+
+.got            0x00000000000021e0        0x0
+ .got           0x00000000000021e0        0x0 sysprogs/spinner.o
+
+.got.plt        0x00000000000021e0        0x0
+ .got.plt       0x00000000000021e0        0x0 sysprogs/spinner.o
+
+.igot.plt       0x00000000000021e0        0x0
+ .igot.plt      0x00000000000021e0        0x0 sysprogs/spinner.o
+
+.bss            0x00000000000021e0        0x0
+ *(.bss)
+ .bss           0x00000000000021e0        0x0 sysprogs/spinner.o
+ *(COMMON)
+OUTPUT(sysprogs/spinner elf32-i386)
+
+.debug_info     0x0000000000000000      0x117
+ .debug_info    0x0000000000000000      0x117 sysprogs/spinner.o
+
+.debug_abbrev   0x0000000000000000       0xcd
+ .debug_abbrev  0x0000000000000000       0xcd sysprogs/spinner.o
+
+.debug_aranges  0x0000000000000000       0x20
+ .debug_aranges
+                0x0000000000000000       0x20 sysprogs/spinner.o
+
+.debug_line     0x0000000000000000       0x83
+ .debug_line    0x0000000000000000       0x83 sysprogs/spinner.o
+
+.debug_str      0x0000000000000000       0xf9
+ .debug_str     0x0000000000000000       0xf9 sysprogs/spinner.o
+                                        0x10b (size before relaxing)
+
+.comment        0x0000000000000000       0x23
+ .comment       0x0000000000000000       0x23 sysprogs/spinner.o
+                                         0x24 (size before relaxing)
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 sysprogs/spinner.o

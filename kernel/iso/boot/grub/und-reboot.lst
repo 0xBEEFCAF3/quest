@@ -1,0 +1,4 @@
+reboot
+grub_reboot
+grub_register_command_prio
+grub_unregister_command

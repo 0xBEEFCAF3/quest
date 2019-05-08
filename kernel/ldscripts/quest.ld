@@ -39,6 +39,7 @@ SECTIONS {
     { *(.rodata*) } : virtualtext
 
   . = ALIGN(32);
+  /*# PRAGMA Need up */
   /* Insert a read-only null-terminated array of pointers to constructors */
   _percpu_ctor_list = .;
   .ctors : AT ( ( LOADADDR (.rodata) + SIZEOF (.rodata) + 31 ) & 0xFFFFFFE0 )

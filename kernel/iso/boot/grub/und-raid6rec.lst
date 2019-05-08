@@ -1,0 +1,9 @@
+raid6rec
+grub_memmove
+grub_disk_read
+grub_errno
+grub_raid_block_xor
+grub_zalloc
+grub_raid6_recover_func
+grub_error
+grub_free

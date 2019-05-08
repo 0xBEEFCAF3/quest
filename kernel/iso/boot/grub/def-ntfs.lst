@@ -1,0 +1,4 @@
+grub_ntfs_fini ntfs
+grub_ntfscomp_func ntfs
+grub_ntfs_read_run_list ntfs
+grub_ntfs_init ntfs

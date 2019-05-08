@@ -1,0 +1,2 @@
+grub_cmp_init cmp
+grub_cmp_fini cmp

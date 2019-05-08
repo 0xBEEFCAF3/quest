@@ -1,0 +1,11 @@
+grub_video_bitmap_get_width bitmap
+grub_video_bitmap_load bitmap
+grub_video_bitmap_reader_register bitmap
+grub_bitmap_init bitmap
+grub_video_bitmap_create bitmap
+grub_video_bitmap_get_mode_info bitmap
+grub_video_bitmap_destroy bitmap
+grub_video_bitmap_get_data bitmap
+grub_video_bitmap_reader_unregister bitmap
+grub_video_bitmap_get_height bitmap
+grub_bitmap_fini bitmap

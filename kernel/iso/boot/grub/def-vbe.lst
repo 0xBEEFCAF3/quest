@@ -1,0 +1,6 @@
+grub_vbe_set_video_mode vbe
+grub_vbe_probe vbe
+grub_video_i386_pc_vbe_fini vbe
+grub_video_i386_pc_vbe_init vbe
+grub_vbe_get_video_mode_info vbe
+grub_vbe_get_video_mode vbe

@@ -1,0 +1,4 @@
+example_functional_test
+grub_test_nonzero
+grub_test_register
+grub_test_unregister

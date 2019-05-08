@@ -1,0 +1,80 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD tests/test6.o
+START GROUP
+LOAD ../libc/libc.a
+END GROUP
+                0x0000000000001074                . = (0x1000 + SIZEOF_HEADERS)
+
+.text           0x0000000000001074      0x37b
+ *(.text)
+ .text          0x0000000000001074      0x37b tests/test6.o
+                0x000000000000116a                putx
+                0x00000000000011bd                print
+                0x00000000000011e6                _start
+
+.iplt           0x00000000000013f0        0x0
+ .iplt          0x00000000000013f0        0x0 tests/test6.o
+
+.rodata         0x00000000000013ef       0x60
+ *(.rodata)
+ .rodata        0x00000000000013ef       0x60 tests/test6.o
+
+.eh_frame       0x0000000000001450      0x1f4
+ .eh_frame      0x0000000000001450      0x1f4 tests/test6.o
+
+.rel.dyn        0x0000000000001644        0x0
+ .rel.got       0x0000000000001644        0x0 tests/test6.o
+ .rel.iplt      0x0000000000001644        0x0 tests/test6.o
+                0x0000000000002644                . = DATA_SEGMENT_ALIGN (0x1000, 0x1000)
+
+.data           0x0000000000002644        0x0
+ *(.data)
+ .data          0x0000000000002644        0x0 tests/test6.o
+
+.got            0x0000000000002644        0x0
+ .got           0x0000000000002644        0x0 tests/test6.o
+
+.got.plt        0x0000000000002644        0x0
+ .got.plt       0x0000000000002644        0x0 tests/test6.o
+
+.igot.plt       0x0000000000002644        0x0
+ .igot.plt      0x0000000000002644        0x0 tests/test6.o
+
+.bss            0x0000000000002644        0x0
+ *(.bss)
+ .bss           0x0000000000002644        0x0 tests/test6.o
+ *(COMMON)
+OUTPUT(tests/test6 elf32-i386)
+
+.debug_info     0x0000000000000000      0x2e4
+ .debug_info    0x0000000000000000      0x2e4 tests/test6.o
+
+.debug_abbrev   0x0000000000000000       0xee
+ .debug_abbrev  0x0000000000000000       0xee tests/test6.o
+
+.debug_aranges  0x0000000000000000       0x20
+ .debug_aranges
+                0x0000000000000000       0x20 tests/test6.o
+
+.debug_line     0x0000000000000000      0x103
+ .debug_line    0x0000000000000000      0x103 tests/test6.o
+
+.debug_str      0x0000000000000000      0x16c
+ .debug_str     0x0000000000000000      0x16c tests/test6.o
+                                        0x183 (size before relaxing)
+
+.comment        0x0000000000000000       0x23
+ .comment       0x0000000000000000       0x23 tests/test6.o
+                                         0x24 (size before relaxing)
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 tests/test6.o

@@ -1,0 +1,4 @@
+grub_scsi_init scsi
+grub_scsi_fini scsi
+grub_scsi_dev_unregister scsi
+grub_scsi_dev_register scsi

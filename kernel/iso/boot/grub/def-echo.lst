@@ -1,0 +1,2 @@
+grub_echo_init echo
+grub_echo_fini echo

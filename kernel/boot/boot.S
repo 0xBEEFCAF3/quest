@@ -84,10 +84,10 @@ _start:
      * it enters the halt procedure where it loops forever doing nothing.
      */
     // Call kernel_main
-    ldr r3, =init
-    //blx r3
+    ldr r3, =kernel_main
+    blx r3
  
     // halt
 halt:
-    //wfe
+    wfe
     b halt

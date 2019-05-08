@@ -1,0 +1,8 @@
+bitmap
+grub_strlen
+grub_errno
+grub_zalloc
+grub_strcmp
+grub_malloc
+grub_error
+grub_free

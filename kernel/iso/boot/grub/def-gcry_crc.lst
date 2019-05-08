@@ -1,0 +1,5 @@
+_gcry_digest_spec_crc24_rfc2440 gcry_crc
+_gcry_digest_spec_crc32_rfc1510 gcry_crc
+grub_gcry_crc_init gcry_crc
+_gcry_digest_spec_crc32 gcry_crc
+grub_gcry_crc_fini gcry_crc

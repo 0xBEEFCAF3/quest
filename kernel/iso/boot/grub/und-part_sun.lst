@@ -1,0 +1,9 @@
+part_sun
+grub_partition_map_list
+grub_disk_read
+grub_errno
+grub_zalloc
+grub_error
+grub_list_remove
+grub_free
+grub_list_push

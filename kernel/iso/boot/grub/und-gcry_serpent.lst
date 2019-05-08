@@ -1,0 +1,6 @@
+gcry_serpent
+grub_burn_stack
+grub_cipher_unregister
+memcmp
+grub_cipher_register
+grub_real_dprintf

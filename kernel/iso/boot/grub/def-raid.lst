@@ -1,0 +1,7 @@
+grub_raid_init raid
+grub_raid5_recover_func raid
+grub_raid_block_xor raid
+grub_raid_register raid
+grub_raid6_recover_func raid
+grub_raid_fini raid
+grub_raid_unregister raid

@@ -1,0 +1,11 @@
+cmp
+grub_errno
+grub_gzfile_open
+grub_register_command_prio
+grub_printf
+grub_unregister_command
+grub_file_read
+grub_malloc
+grub_file_close
+grub_error
+grub_free

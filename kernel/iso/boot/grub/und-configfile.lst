@@ -1,0 +1,8 @@
+configfile
+grub_env_context_close
+grub_env_context_open
+grub_register_command_prio
+grub_unregister_command
+grub_normal_execute
+grub_error
+grub_cls

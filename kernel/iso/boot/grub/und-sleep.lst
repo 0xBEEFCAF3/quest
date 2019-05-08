@@ -1,0 +1,12 @@
+sleep
+grub_millisleep
+grub_term_restore_pos
+grub_term_save_pos
+grub_unregister_extcmd
+grub_getkey
+grub_printf
+grub_checkkey
+grub_get_time_ms
+grub_error
+grub_register_extcmd
+grub_strtoul

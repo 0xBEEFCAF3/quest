@@ -1,0 +1,2 @@
+grub_xfs_fini xfs
+grub_xfs_init xfs

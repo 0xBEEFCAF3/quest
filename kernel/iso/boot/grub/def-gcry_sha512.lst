@@ -1,0 +1,4 @@
+grub_gcry_sha512_init gcry_sha512
+grub_gcry_sha512_fini gcry_sha512
+_gcry_digest_spec_sha384 gcry_sha512
+_gcry_digest_spec_sha512 gcry_sha512

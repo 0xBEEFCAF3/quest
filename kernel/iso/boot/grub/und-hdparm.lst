@@ -1,0 +1,14 @@
+hdparm
+grub_strlen
+grub_disk_open
+grub_disk_ata_pass_through
+grub_snprintf
+grub_unregister_extcmd
+grub_errno
+grub_memset
+grub_disk_close
+grub_printf
+grub_error
+grub_register_extcmd
+grub_memcmp
+grub_strtoul

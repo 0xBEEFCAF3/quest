@@ -1,0 +1,15 @@
+usb
+grub_millisleep
+grub_dma_get_virt
+grub_memmove
+grub_dma_free
+grub_errno
+grub_memset
+grub_zalloc
+grub_malloc
+grub_get_time_ms
+grub_real_dprintf
+grub_error
+grub_free
+grub_memalign_dma32
+grub_dma_get_phys

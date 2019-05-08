@@ -1,0 +1,6 @@
+pbkdf2
+grub_memmove
+grub_memset
+grub_malloc
+grub_free
+grub_crypto_hmac_buffer

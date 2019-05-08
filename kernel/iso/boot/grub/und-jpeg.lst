@@ -1,0 +1,15 @@
+jpeg
+grub_video_bitmap_reader_register
+grub_video_bitmap_create
+grub_file_seek
+grub_video_bitmap_destroy
+grub_errno
+grub_memset
+grub_file_read
+grub_zalloc
+grub_malloc
+grub_file_close
+grub_buffile_open
+grub_error
+grub_video_bitmap_reader_unregister
+grub_free

@@ -1,0 +1,3 @@
+grub_gcry_rfc2268_init gcry_rfc2268
+_gcry_cipher_spec_rfc2268_40 gcry_rfc2268
+grub_gcry_rfc2268_fini gcry_rfc2268

@@ -1,0 +1,2 @@
+grub_reboot_fini reboot
+grub_reboot_init reboot

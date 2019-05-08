@@ -36,6 +36,13 @@ static frec_p frecs;            /* Allocatable records from free-list.     */
 static void MergeRecords (frec_p frp);
 static void DelRecord (frec_p prev_frp, frec_p frp);
 
+void bzero(void * dest, int bytes) {
+    char * d = dest;
+    while (bytes--) {
+        *d++ = 0;
+    }
+}
+
 /* Convert the integer D to a string and save the string in BUF. If
    BASE is equal to 'd', interpret that D is decimal, and if BASE is
    equal to 'x', interpret that D is hexadecimal. */

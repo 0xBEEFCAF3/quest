@@ -1,0 +1,16 @@
+grub_terminfo_gotoxy terminfo
+grub_terminfo_checkkey terminfo
+grub_terminfo_putchar terminfo
+grub_terminfo_get_current terminfo
+grub_terminfo_output_register terminfo
+grub_terminfo_cls terminfo
+grub_terminfo_fini terminfo
+grub_terminfo_setcolorstate terminfo
+grub_terminfo_setcursor terminfo
+grub_terminfo_getkey terminfo
+grub_terminfo_tparm terminfo
+grub_terminfo_output_unregister terminfo
+grub_terminfo_input_init terminfo
+grub_terminfo_set_current terminfo
+grub_terminfo_getxy terminfo
+grub_terminfo_init terminfo

@@ -1,0 +1,2 @@
+grub_afs_be_init afs_be
+grub_afs_be_fini afs_be

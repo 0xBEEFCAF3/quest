@@ -1,0 +1,2 @@
+grub_configfile_init configfile
+grub_configfile_fini configfile

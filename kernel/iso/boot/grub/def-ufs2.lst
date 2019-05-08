@@ -1,0 +1,2 @@
+grub_ufs2_init ufs2
+grub_ufs2_fini ufs2

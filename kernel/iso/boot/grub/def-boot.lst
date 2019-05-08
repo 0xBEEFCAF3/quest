@@ -1,0 +1,9 @@
+grub_loader_is_loaded boot
+grub_boot_fini boot
+grub_loader_unset boot
+grub_boot_init boot
+grub_get_root_biosnumber boot
+grub_loader_unregister_preboot_hook boot
+grub_loader_boot boot
+grub_loader_register_preboot_hook boot
+grub_loader_set boot

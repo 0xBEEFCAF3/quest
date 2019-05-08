@@ -1,0 +1,2 @@
+grub_part_acorn_init part_acorn
+grub_part_acorn_fini part_acorn

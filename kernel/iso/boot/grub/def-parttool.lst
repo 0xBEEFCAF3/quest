@@ -1,0 +1,4 @@
+grub_parttool_fini parttool
+grub_parttool_register parttool
+grub_parttool_unregister parttool
+grub_parttool_init parttool

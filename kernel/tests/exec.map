@@ -1,0 +1,141 @@
+Archive member included to satisfy reference by file (symbol)
+
+../libc/libc.a(stdio.o)       tests/exec.o (printf)
+
+Discarded input sections
+
+ .group         0x0000000000000000        0x8 ../libc/libc.a(stdio.o)
+ .group         0x0000000000000000        0x8 ../libc/libc.a(stdio.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD tests/exec.o
+START GROUP
+LOAD ../libc/libc.a
+END GROUP
+                0x0000000000001094                . = (0x1000 + SIZEOF_HEADERS)
+
+.text           0x0000000000001094      0xba2
+ *(.text)
+ .text          0x0000000000001094       0x81 tests/exec.o
+                0x00000000000010c7                main
+ .text          0x0000000000001115      0xb21 ../libc/libc.a(stdio.o)
+                0x00000000000011bb                itoa
+                0x00000000000012a3                printf
+                0x00000000000013bf                sprintf
+                0x00000000000014e7                mem_init
+                0x00000000000015a6                malloc
+                0x00000000000016d5                free
+                0x000000000000186b                exit
+                0x0000000000001880                rand
+                0x00000000000018b5                srand
+                0x00000000000018ce                atoi
+                0x00000000000018e2                clock
+                0x00000000000018fc                strlen
+                0x000000000000192d                strcpy
+                0x000000000000195e                strncpy
+                0x00000000000019ab                strcmp
+                0x00000000000019fb                memset
+                0x0000000000001a1c                memcpy
+                0x0000000000001a41                memcmp
+                0x0000000000001aa6                fread
+                0x0000000000001b2a                fopen
+                0x0000000000001b8b                fwrite
+                0x0000000000001b9f                fclose
+                0x0000000000001bb3                fprintf
+                0x0000000000001bc3                puts
+                0x0000000000001c05                _start
+
+.iplt           0x0000000000001c38        0x0
+ .iplt          0x0000000000001c38        0x0 tests/exec.o
+
+.text.__x86.get_pc_thunk.ax
+                0x0000000000001c36        0x4
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000001c36        0x4 ../libc/libc.a(stdio.o)
+                0x0000000000001c36                __x86.get_pc_thunk.ax
+
+.text.__x86.get_pc_thunk.bx
+                0x0000000000001c3a        0x4
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000001c3a        0x4 ../libc/libc.a(stdio.o)
+                0x0000000000001c3a                __x86.get_pc_thunk.bx
+
+.rodata         0x0000000000001c3e       0x28
+ *(.rodata)
+ .rodata        0x0000000000001c3e       0x21 tests/exec.o
+ .rodata        0x0000000000001c5f        0x7 ../libc/libc.a(stdio.o)
+
+.eh_frame       0x0000000000001c68      0x4f4
+ .eh_frame      0x0000000000001c68       0x90 tests/exec.o
+ .eh_frame      0x0000000000001cf8      0x464 ../libc/libc.a(stdio.o)
+                                        0x47c (size before relaxing)
+
+.rel.dyn        0x000000000000215c        0x0
+ .rel.got       0x000000000000215c        0x0 tests/exec.o
+ .rel.iplt      0x000000000000215c        0x0 tests/exec.o
+                0x000000000000315c                . = DATA_SEGMENT_ALIGN (0x1000, 0x1000)
+
+.data           0x000000000000315c        0x4
+ *(.data)
+ .data          0x000000000000315c        0x0 tests/exec.o
+ .data          0x000000000000315c        0x4 ../libc/libc.a(stdio.o)
+
+.got            0x0000000000003160        0x0
+ .got           0x0000000000003160        0x0 tests/exec.o
+
+.got.plt        0x0000000000003160        0xc
+ .got.plt       0x0000000000003160        0xc tests/exec.o
+                0x0000000000003160                _GLOBAL_OFFSET_TABLE_
+
+.igot.plt       0x000000000000316c        0x0
+ .igot.plt      0x000000000000316c        0x0 tests/exec.o
+
+.bss            0x0000000000003180    0xf6284
+ *(.bss)
+ .bss           0x0000000000003180        0x0 tests/exec.o
+ .bss           0x0000000000003180    0xf6284 ../libc/libc.a(stdio.o)
+ *(COMMON)
+OUTPUT(tests/exec elf32-i386)
+
+.debug_info     0x0000000000000000      0xabd
+ .debug_info    0x0000000000000000       0xaf tests/exec.o
+ .debug_info    0x00000000000000af      0xa0e ../libc/libc.a(stdio.o)
+
+.debug_abbrev   0x0000000000000000      0x394
+ .debug_abbrev  0x0000000000000000       0x9d tests/exec.o
+ .debug_abbrev  0x000000000000009d      0x2f7 ../libc/libc.a(stdio.o)
+
+.debug_aranges  0x0000000000000000       0x40
+ .debug_aranges
+                0x0000000000000000       0x20 tests/exec.o
+ .debug_aranges
+                0x0000000000000020       0x20 ../libc/libc.a(stdio.o)
+
+.debug_line     0x0000000000000000      0x2aa
+ .debug_line    0x0000000000000000       0x7e tests/exec.o
+ .debug_line    0x000000000000007e      0x22c ../libc/libc.a(stdio.o)
+
+.debug_str      0x0000000000000000      0x2fd
+ .debug_str     0x0000000000000000       0xb9 tests/exec.o
+                                         0xcb (size before relaxing)
+ .debug_str     0x00000000000000b9      0x244 ../libc/libc.a(stdio.o)
+                                        0x283 (size before relaxing)
+
+.comment        0x0000000000000000       0x4c
+ .comment       0x0000000000000000       0x23 tests/exec.o
+                                         0x24 (size before relaxing)
+ .comment       0x0000000000000023       0x29 ../libc/libc.a(stdio.o)
+                                         0x2a (size before relaxing)
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 tests/exec.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 ../libc/libc.a(stdio.o)

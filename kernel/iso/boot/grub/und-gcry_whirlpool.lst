@@ -1,0 +1,6 @@
+gcry_whirlpool
+memcpy
+grub_fatal
+grub_memset
+grub_md_unregister
+grub_md_register

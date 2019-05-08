@@ -1,0 +1,7 @@
+grub_test_run functional_test
+grub_test_list functional_test
+grub_test_nonzero functional_test
+grub_functional_test_init functional_test
+grub_functional_test_fini functional_test
+grub_test_register functional_test
+grub_test_unregister functional_test

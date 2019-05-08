@@ -1,0 +1,2 @@
+grub_aout_get_type aout
+grub_aout_load aout

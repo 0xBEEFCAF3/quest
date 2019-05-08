@@ -1,0 +1,7 @@
+grub_envblk_iterate loadenv
+grub_envblk_close loadenv
+grub_loadenv_fini loadenv
+grub_envblk_open loadenv
+grub_loadenv_init loadenv
+grub_envblk_delete loadenv
+grub_envblk_set loadenv

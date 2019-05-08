@@ -1,0 +1,3 @@
+grub_gettext_init gettext
+grub_gettext_msg_list gettext
+grub_gettext_fini gettext

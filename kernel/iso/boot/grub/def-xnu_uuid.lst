@@ -1,0 +1,2 @@
+grub_xnu_uuid_fini xnu_uuid
+grub_xnu_uuid_init xnu_uuid

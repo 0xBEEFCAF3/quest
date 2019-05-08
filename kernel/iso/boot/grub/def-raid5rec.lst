@@ -1,0 +1,2 @@
+grub_raid5rec_init raid5rec
+grub_raid5rec_fini raid5rec

@@ -1,0 +1,77 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD sysprogs/ipctest.o
+START GROUP
+LOAD ../libc/libc.a
+END GROUP
+                0x0000000000001074                . = (0x1000 + SIZEOF_HEADERS)
+
+.text           0x0000000000001074       0x71
+ *(.text)
+ .text          0x0000000000001074       0x71 sysprogs/ipctest.o
+                0x00000000000010ca                _start
+
+.iplt           0x00000000000010e8        0x0
+ .iplt          0x00000000000010e8        0x0 sysprogs/ipctest.o
+
+.rodata
+ *(.rodata)
+
+.eh_frame       0x00000000000010e8       0xc8
+ .eh_frame      0x00000000000010e8       0xc8 sysprogs/ipctest.o
+
+.rel.dyn        0x00000000000011b0        0x0
+ .rel.got       0x00000000000011b0        0x0 sysprogs/ipctest.o
+ .rel.iplt      0x00000000000011b0        0x0 sysprogs/ipctest.o
+                0x00000000000021b0                . = DATA_SEGMENT_ALIGN (0x1000, 0x1000)
+
+.data           0x00000000000021b0        0x0
+ *(.data)
+ .data          0x00000000000021b0        0x0 sysprogs/ipctest.o
+
+.got            0x00000000000021b0        0x0
+ .got           0x00000000000021b0        0x0 sysprogs/ipctest.o
+
+.got.plt        0x00000000000021b0        0x0
+ .got.plt       0x00000000000021b0        0x0 sysprogs/ipctest.o
+
+.igot.plt       0x00000000000021b0        0x0
+ .igot.plt      0x00000000000021b0        0x0 sysprogs/ipctest.o
+
+.bss            0x00000000000021b0        0x0
+ *(.bss)
+ .bss           0x00000000000021b0        0x0 sysprogs/ipctest.o
+ *(COMMON)
+OUTPUT(sysprogs/ipctest elf32-i386)
+
+.debug_info     0x0000000000000000       0xb8
+ .debug_info    0x0000000000000000       0xb8 sysprogs/ipctest.o
+
+.debug_abbrev   0x0000000000000000       0xa6
+ .debug_abbrev  0x0000000000000000       0xa6 sysprogs/ipctest.o
+
+.debug_aranges  0x0000000000000000       0x20
+ .debug_aranges
+                0x0000000000000000       0x20 sysprogs/ipctest.o
+
+.debug_line     0x0000000000000000       0x7e
+ .debug_line    0x0000000000000000       0x7e sysprogs/ipctest.o
+
+.debug_str      0x0000000000000000       0xe6
+ .debug_str     0x0000000000000000       0xe6 sysprogs/ipctest.o
+                                         0xf3 (size before relaxing)
+
+.comment        0x0000000000000000       0x23
+ .comment       0x0000000000000000       0x23 sysprogs/ipctest.o
+                                         0x24 (size before relaxing)
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 sysprogs/ipctest.o

@@ -1,0 +1,2 @@
+grub_datehook_fini datehook
+grub_datehook_init datehook

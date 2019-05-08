@@ -1,0 +1,14 @@
+mmap
+grub_strtoull
+grub_memmove
+grub_machine_mmap_iterate
+grub_errno
+grub_memset
+grub_register_command_prio
+grub_unregister_command
+grub_malloc
+grub_real_dprintf
+grub_error
+grub_free
+grub_loader_register_preboot_hook
+grub_memalign

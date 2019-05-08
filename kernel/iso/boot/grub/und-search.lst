@@ -1,0 +1,8 @@
+search
+grub_unregister_extcmd
+grub_errno
+grub_search_fs_uuid
+grub_search_fs_file
+grub_error
+grub_register_extcmd
+grub_search_label

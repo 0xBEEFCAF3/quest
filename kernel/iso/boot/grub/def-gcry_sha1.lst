@@ -1,0 +1,3 @@
+grub_gcry_sha1_fini gcry_sha1
+grub_gcry_sha1_init gcry_sha1
+_gcry_digest_spec_sha1 gcry_sha1

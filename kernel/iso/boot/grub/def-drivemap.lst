@@ -1,0 +1,5 @@
+grub_drivemap_oldhandler drivemap
+grub_drivemap_fini drivemap
+grub_drivemap_init drivemap
+grub_drivemap_handler drivemap
+grub_drivemap_mapstart drivemap

@@ -1,0 +1,12 @@
+grub_usb_set_configuration usb
+grub_usb_bulk_read usb
+grub_usb_control_msg usb
+grub_usb_root_hub usb
+grub_usb_controller_dev_unregister usb
+grub_usb_get_descriptor usb
+grub_usb_device_initialize usb
+grub_usb_iterate usb
+grub_usb_controller_dev_register usb
+grub_usb_clear_halt usb
+grub_usb_bulk_write usb
+grub_usb_get_endpdescriptor usb

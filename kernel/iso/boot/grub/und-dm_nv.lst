@@ -1,0 +1,10 @@
+dm_nv
+grub_disk_get_size
+grub_memmove
+grub_disk_read
+grub_errno
+grub_raid_register
+grub_malloc
+grub_error
+grub_memcmp
+grub_raid_unregister

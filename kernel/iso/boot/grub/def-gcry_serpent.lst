@@ -1,0 +1,5 @@
+_gcry_cipher_spec_serpent192 gcry_serpent
+grub_gcry_serpent_init gcry_serpent
+_gcry_cipher_spec_serpent256 gcry_serpent
+grub_gcry_serpent_fini gcry_serpent
+_gcry_cipher_spec_serpent128 gcry_serpent

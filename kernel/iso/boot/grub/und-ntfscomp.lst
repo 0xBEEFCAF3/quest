@@ -1,0 +1,10 @@
+ntfscomp
+grub_memmove
+grub_disk_read
+grub_ntfscomp_func
+grub_errno
+grub_memset
+grub_ntfs_read_run_list
+grub_malloc
+grub_error
+grub_free

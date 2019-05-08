@@ -1,0 +1,2 @@
+grub_keystatus_init keystatus
+grub_keystatus_fini keystatus

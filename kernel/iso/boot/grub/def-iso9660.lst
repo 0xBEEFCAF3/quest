@@ -1,0 +1,2 @@
+grub_iso9660_init iso9660
+grub_iso9660_fini iso9660

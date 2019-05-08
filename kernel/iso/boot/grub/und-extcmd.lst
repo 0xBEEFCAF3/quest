@@ -1,0 +1,16 @@
+extcmd
+grub_strlen
+grub_strncmp
+grub_strtoull
+grub_realloc
+grub_xputs
+grub_errno
+grub_register_command_prio
+grub_printf
+grub_unregister_command
+grub_zalloc
+grub_strchr
+grub_malloc
+grub_error
+grub_free
+grub_gettext

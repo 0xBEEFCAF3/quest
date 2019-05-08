@@ -1,0 +1,13 @@
+search_fs_file
+grub_fs_autoload_hook
+grub_xasprintf
+grub_errno
+grub_register_command_prio
+grub_printf
+grub_unregister_command
+grub_file_close
+grub_file_open
+grub_error
+grub_free
+grub_device_iterate
+grub_env_set

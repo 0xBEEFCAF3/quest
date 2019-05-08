@@ -1,0 +1,3 @@
+grub_search_fs_file search_fs_file
+grub_search_fs_file_init search_fs_file
+grub_search_fs_file_fini search_fs_file

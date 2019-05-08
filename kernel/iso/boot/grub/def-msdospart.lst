@@ -1,0 +1,2 @@
+grub_msdospart_fini msdospart
+grub_msdospart_init msdospart

@@ -1,0 +1,2 @@
+grub_biosdisk_fini biosdisk
+grub_biosdisk_init biosdisk

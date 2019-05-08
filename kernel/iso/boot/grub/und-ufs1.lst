@@ -1,0 +1,17 @@
+ufs1
+grub_strlen
+grub_strcpy
+grub_xasprintf
+grub_disk_read
+grub_dl_ref
+grub_errno
+grub_memset
+grub_fs_list
+grub_strcmp
+grub_strchr
+grub_malloc
+grub_error
+grub_list_remove
+grub_free
+grub_dl_unref
+grub_list_push

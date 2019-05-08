@@ -1,0 +1,2 @@
+grub_buffile_open bufio
+grub_bufio_open bufio

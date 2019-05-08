@@ -1,0 +1,8 @@
+mdraid
+grub_disk_get_size
+grub_disk_read
+grub_errno
+grub_raid_register
+grub_malloc
+grub_error
+grub_raid_unregister

@@ -1,0 +1,15 @@
+re_syntax_options regexp
+re_search_2 regexp
+grub_regexp_init regexp
+re_match regexp
+re_set_registers regexp
+re_compile_pattern regexp
+re_match_2 regexp
+regcomp regexp
+regexec regexp
+regerror regexp
+re_compile_fastmap regexp
+re_set_syntax regexp
+re_search regexp
+grub_regexp_fini regexp
+regfree regexp

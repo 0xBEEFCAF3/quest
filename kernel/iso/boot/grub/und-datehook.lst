@@ -1,0 +1,7 @@
+datehook
+grub_get_datetime
+grub_snprintf
+grub_get_weekday_name
+grub_register_variable_hook
+grub_strcmp
+grub_env_unset

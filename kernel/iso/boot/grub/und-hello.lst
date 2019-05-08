@@ -1,0 +1,4 @@
+hello
+grub_unregister_extcmd
+grub_printf
+grub_register_extcmd

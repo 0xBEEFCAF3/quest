@@ -1,0 +1,4 @@
+grub_serial_terminfo_output serial
+grub_serial_fini serial
+grub_serial_terminfo_input serial
+grub_serial_init serial

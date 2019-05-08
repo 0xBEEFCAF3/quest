@@ -1,0 +1,6 @@
+pxecmd
+grub_pxe_pxenv
+grub_pxe_unload
+grub_register_command_prio
+grub_unregister_command
+grub_error

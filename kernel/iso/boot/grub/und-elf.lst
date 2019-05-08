@@ -1,0 +1,13 @@
+elf
+grub_error_push
+grub_file_seek
+grub_errno
+grub_memset
+grub_gzfile_open
+grub_file_read
+grub_zalloc
+grub_malloc
+grub_file_close
+grub_real_dprintf
+grub_error
+grub_free

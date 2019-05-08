@@ -1,0 +1,14 @@
+vbetest
+grub_vbe_set_video_mode
+grub_vbe_probe
+grub_errno
+grub_memset
+grub_getkey
+grub_register_command_prio
+grub_printf
+grub_unregister_command
+grub_video_restore
+grub_vbe_get_video_mode_info
+grub_env_get
+grub_strtoul
+grub_vbe_get_video_mode

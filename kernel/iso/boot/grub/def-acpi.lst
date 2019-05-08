@@ -1,0 +1,8 @@
+grub_byte_checksum acpi
+grub_acpi_init acpi
+grub_acpi_get_rsdpv1 acpi
+grub_machine_acpi_get_rsdpv1 acpi
+grub_acpi_fini acpi
+grub_acpi_create_ebda acpi
+grub_acpi_get_rsdpv2 acpi
+grub_machine_acpi_get_rsdpv2 acpi

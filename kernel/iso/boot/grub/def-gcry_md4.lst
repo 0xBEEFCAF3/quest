@@ -1,0 +1,3 @@
+_gcry_digest_spec_md4 gcry_md4
+grub_gcry_md4_init gcry_md4
+grub_gcry_md4_fini gcry_md4

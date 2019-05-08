@@ -1,0 +1,2 @@
+grub_part_sunpc_fini part_sunpc
+grub_part_sunpc_init part_sunpc

@@ -1,0 +1,2 @@
+grub_vbetest_fini vbetest
+grub_vbetest_init vbetest

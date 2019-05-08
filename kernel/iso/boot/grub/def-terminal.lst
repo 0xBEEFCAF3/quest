@@ -1,0 +1,4 @@
+grub_term_input_autoload terminal
+grub_terminal_fini terminal
+grub_term_output_autoload terminal
+grub_terminal_init terminal

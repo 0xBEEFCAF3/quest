@@ -1,0 +1,3 @@
+grub_gcry_tiger_init gcry_tiger
+_gcry_digest_spec_tiger gcry_tiger
+grub_gcry_tiger_fini gcry_tiger

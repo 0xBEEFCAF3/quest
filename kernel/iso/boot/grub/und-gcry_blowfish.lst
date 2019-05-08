@@ -1,0 +1,4 @@
+gcry_blowfish
+grub_burn_stack
+grub_cipher_unregister
+grub_cipher_register

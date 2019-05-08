@@ -1,0 +1,6 @@
+*inb: iorw
+*inw: iorw
+*inl: iorw
+outb: iorw
+outw: iorw
+outl: iorw

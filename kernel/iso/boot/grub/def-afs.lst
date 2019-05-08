@@ -1,0 +1,2 @@
+grub_afs_fini afs
+grub_afs_init afs

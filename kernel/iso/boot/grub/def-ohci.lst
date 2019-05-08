@@ -1,0 +1,2 @@
+grub_ohci_fini ohci
+grub_ohci_init ohci

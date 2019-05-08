@@ -1,0 +1,5 @@
+grub_gcry_rijndael_fini gcry_rijndael
+_gcry_cipher_spec_aes gcry_rijndael
+grub_gcry_rijndael_init gcry_rijndael
+_gcry_cipher_spec_aes192 gcry_rijndael
+_gcry_cipher_spec_aes256 gcry_rijndael

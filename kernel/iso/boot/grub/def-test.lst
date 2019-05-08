@@ -1,0 +1,2 @@
+grub_test_init test
+grub_test_fini test

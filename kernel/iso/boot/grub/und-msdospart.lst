@@ -1,0 +1,9 @@
+msdospart
+grub_parttool_register
+grub_disk_read
+grub_parttool_unregister
+grub_errno
+grub_printf
+grub_disk_write
+grub_error
+grub_strtoul

@@ -1,0 +1,2 @@
+grub_chainloader_init chain
+grub_chainloader_fini chain

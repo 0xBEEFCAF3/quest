@@ -1,0 +1,5 @@
+gcry_sha512
+grub_memset
+grub_burn_stack
+grub_md_unregister
+grub_md_register

@@ -1,0 +1,4 @@
+grub_gcry_des_fini gcry_des
+_gcry_cipher_spec_des gcry_des
+grub_gcry_des_init gcry_des
+_gcry_cipher_spec_tripledes gcry_des

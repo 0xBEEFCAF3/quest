@@ -1,0 +1,2 @@
+grub_part_msdos_fini part_msdos
+grub_part_msdos_init part_msdos

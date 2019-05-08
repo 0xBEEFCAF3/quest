@@ -1,0 +1,14 @@
+scsi
+grub_strlen
+grub_xasprintf
+grub_strdup
+grub_divmod64
+grub_disk_dev_register
+grub_errno
+grub_memset
+grub_malloc
+grub_get_time_ms
+grub_real_dprintf
+grub_error
+grub_free
+grub_disk_dev_unregister

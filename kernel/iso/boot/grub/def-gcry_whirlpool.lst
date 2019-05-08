@@ -1,0 +1,3 @@
+_gcry_digest_spec_whirlpool gcry_whirlpool
+grub_gcry_whirlpool_init gcry_whirlpool
+grub_gcry_whirlpool_fini gcry_whirlpool

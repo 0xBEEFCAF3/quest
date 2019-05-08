@@ -1,0 +1,8 @@
+part_amiga
+grub_partition_map_list
+grub_disk_read
+grub_errno
+grub_strcmp
+grub_error
+grub_list_remove
+grub_list_push

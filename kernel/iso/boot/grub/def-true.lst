@@ -1,0 +1,2 @@
+grub_true_init true
+grub_true_fini true

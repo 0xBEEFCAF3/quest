@@ -1,0 +1,3 @@
+grub_cpuid_init cpuid
+grub_cpuid_fini cpuid
+grub_cpuid_has_longmode cpuid

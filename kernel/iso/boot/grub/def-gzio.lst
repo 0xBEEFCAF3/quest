@@ -1,0 +1,2 @@
+grub_gzio_open gzio
+grub_gzfile_open gzio

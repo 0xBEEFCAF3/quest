@@ -1,0 +1,2 @@
+grub_befs_be_init befs_be
+grub_befs_be_fini befs_be

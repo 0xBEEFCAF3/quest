@@ -1,0 +1,2 @@
+grub_usbtest_fini usbtest
+grub_usbtest_init usbtest

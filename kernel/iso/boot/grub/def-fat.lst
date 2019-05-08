@@ -1,0 +1,2 @@
+grub_fat_init fat
+grub_fat_fini fat

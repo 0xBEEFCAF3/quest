@@ -1,0 +1,2 @@
+grub_search_init search
+grub_search_fini search

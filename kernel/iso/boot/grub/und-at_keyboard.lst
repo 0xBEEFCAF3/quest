@@ -1,0 +1,6 @@
+at_keyboard
+grub_term_inputs
+grub_term_inputs_disabled
+grub_real_dprintf
+grub_list_remove
+grub_list_push

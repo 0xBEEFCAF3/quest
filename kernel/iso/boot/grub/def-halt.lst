@@ -1,0 +1,2 @@
+grub_halt_fini halt
+grub_halt_init halt

@@ -1,0 +1,9 @@
+grub_elf_is_elf32 elf
+grub_elf_file elf
+grub_elf_is_elf64 elf
+grub_elf_close elf
+grub_elf64_load elf
+grub_elf_open elf
+grub_elf32_size elf
+grub_elf64_size elf
+grub_elf32_load elf

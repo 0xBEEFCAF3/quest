@@ -1,0 +1,7 @@
+ata_pthru
+grub_ata_wait_not_busy
+grub_disk_ata_pass_through
+grub_errno
+grub_ata_pio_read
+grub_real_dprintf
+grub_error

@@ -1,0 +1,10 @@
+memdisk
+grub_module_iterate
+grub_memmove
+grub_disk_dev_register
+grub_strcmp
+grub_malloc
+grub_real_dprintf
+grub_error
+grub_free
+grub_disk_dev_unregister

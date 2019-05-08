@@ -1,0 +1,3 @@
+_gcry_cipher_spec_cast5 gcry_cast5
+grub_gcry_cast5_init gcry_cast5
+grub_gcry_cast5_fini gcry_cast5

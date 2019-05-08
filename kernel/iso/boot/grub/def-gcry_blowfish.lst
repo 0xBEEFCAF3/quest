@@ -1,0 +1,3 @@
+grub_gcry_blowfish_init gcry_blowfish
+_gcry_cipher_spec_blowfish gcry_blowfish
+grub_gcry_blowfish_fini gcry_blowfish

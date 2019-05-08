@@ -1,0 +1,2 @@
+grub_video_bochs_fini video_bochs
+grub_video_bochs_init video_bochs

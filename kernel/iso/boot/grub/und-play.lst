@@ -1,0 +1,12 @@
+play
+grub_get_rtc
+grub_getkey
+grub_register_command_prio
+grub_unregister_command
+grub_file_read
+grub_checkkey
+grub_file_close
+grub_file_open
+grub_real_dprintf
+grub_error
+grub_strtoul

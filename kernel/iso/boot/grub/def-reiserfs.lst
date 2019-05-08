@@ -1,0 +1,2 @@
+grub_reiserfs_fini reiserfs
+grub_reiserfs_init reiserfs

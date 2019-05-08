@@ -1,0 +1,2 @@
+grub_blocklist_init blocklist
+grub_blocklist_fini blocklist

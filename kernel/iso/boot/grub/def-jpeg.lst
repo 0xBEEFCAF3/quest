@@ -1,0 +1,2 @@
+grub_jpeg_init jpeg
+grub_jpeg_fini jpeg

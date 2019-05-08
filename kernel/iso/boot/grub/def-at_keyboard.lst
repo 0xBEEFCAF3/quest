@@ -1,0 +1,2 @@
+grub_at_keyboard_fini at_keyboard
+grub_at_keyboard_init at_keyboard

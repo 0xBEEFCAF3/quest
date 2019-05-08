@@ -1,0 +1,2 @@
+grub_memdisk_init memdisk
+grub_memdisk_fini memdisk

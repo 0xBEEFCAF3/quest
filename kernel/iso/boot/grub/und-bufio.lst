@@ -1,0 +1,8 @@
+bufio
+grub_memmove
+grub_divmod64
+grub_errno
+grub_malloc
+grub_file_close
+grub_file_open
+grub_free

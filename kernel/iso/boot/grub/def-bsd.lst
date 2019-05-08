@@ -1,0 +1,13 @@
+grub_freebsd_load_elfmodule32 bsd
+grub_freebsd_add_meta bsd
+grub_bsd64_trampoline_gdt bsd
+grub_bsd_init bsd
+grub_bsd64_trampoline_start bsd
+grub_bsd_fini bsd
+grub_freebsd_load_elfmodule_obj64 bsd
+grub_freebsd_add_meta_module bsd
+grub_bsd64_trampoline_end bsd
+grub_freebsd_load_elf_meta32 bsd
+grub_freebsd_load_elf_meta64 bsd
+grub_bsd64_trampoline_selfjump bsd
+grub_unix_real_boot bsd

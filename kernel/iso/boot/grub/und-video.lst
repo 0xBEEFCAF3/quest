@@ -1,0 +1,11 @@
+video
+grub_strdup
+grub_errno
+grub_memset
+grub_strcmp
+grub_strchr
+grub_isspace
+grub_error
+grub_free
+grub_memcmp
+grub_strtoul

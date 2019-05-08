@@ -1,0 +1,8 @@
+xnu_kernel: xnu
+xnu_kernel64: xnu
+xnu_mkext: xnu
+xnu_kext: xnu
+xnu_kextdir: xnu
+xnu_ramdisk: xnu
+*xnu_splash: xnu
+xnu_resume: xnu

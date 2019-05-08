@@ -1,0 +1,2 @@
+grub_cpio_fini cpio
+grub_cpio_init cpio

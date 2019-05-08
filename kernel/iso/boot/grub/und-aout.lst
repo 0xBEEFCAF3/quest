@@ -1,0 +1,5 @@
+aout
+grub_file_seek
+grub_errno
+grub_memset
+grub_file_read

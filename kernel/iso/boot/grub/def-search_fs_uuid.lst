@@ -1,0 +1,3 @@
+grub_search_fs_uuid_init search_fs_uuid
+grub_search_fs_uuid_fini search_fs_uuid
+grub_search_fs_uuid search_fs_uuid

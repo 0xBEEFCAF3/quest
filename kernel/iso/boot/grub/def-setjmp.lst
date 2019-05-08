@@ -1,0 +1,2 @@
+grub_longjmp setjmp
+grub_setjmp setjmp

@@ -1,0 +1,2 @@
+grub_hello_init hello
+grub_hello_fini hello

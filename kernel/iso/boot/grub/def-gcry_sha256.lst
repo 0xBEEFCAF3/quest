@@ -1,0 +1,4 @@
+_gcry_digest_spec_sha256 gcry_sha256
+_gcry_digest_spec_sha224 gcry_sha256
+grub_gcry_sha256_init gcry_sha256
+grub_gcry_sha256_fini gcry_sha256

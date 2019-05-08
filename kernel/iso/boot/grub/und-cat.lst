@@ -1,0 +1,16 @@
+cat
+grub_unregister_extcmd
+grub_xputs
+grub_errno
+grub_getkey
+grub_gzfile_open
+grub_printf
+grub_file_read
+grub_term_outputs
+grub_checkkey
+grub_refresh
+grub_file_close
+grub_isspace
+grub_error
+grub_register_extcmd
+grub_isprint

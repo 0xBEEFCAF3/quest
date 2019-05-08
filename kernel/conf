@@ -1,4 +1,4 @@
 make clean -C ../libc && make -C ../libc
 make clean
 make config.mk
-make netboot
+make raspi

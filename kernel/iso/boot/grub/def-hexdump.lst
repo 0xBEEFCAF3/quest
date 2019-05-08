@@ -1,0 +1,3 @@
+hexdump hexdump
+grub_hexdump_init hexdump
+grub_hexdump_fini hexdump

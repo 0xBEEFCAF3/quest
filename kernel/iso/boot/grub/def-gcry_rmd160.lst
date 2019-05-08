@@ -1,0 +1,5 @@
+_gcry_rmd160_init gcry_rmd160
+grub_gcry_rmd160_fini gcry_rmd160
+grub_gcry_rmd160_init gcry_rmd160
+_gcry_rmd160_mixblock gcry_rmd160
+_gcry_digest_spec_rmd160 gcry_rmd160

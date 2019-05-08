@@ -1,0 +1,2 @@
+grub_lsmmap_fini lsmmap
+grub_lsmmap_init lsmmap

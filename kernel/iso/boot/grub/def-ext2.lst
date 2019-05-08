@@ -1,0 +1,2 @@
+grub_ext2_fini ext2
+grub_ext2_init ext2

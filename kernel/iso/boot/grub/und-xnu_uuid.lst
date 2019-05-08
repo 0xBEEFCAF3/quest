@@ -1,0 +1,9 @@
+xnu_uuid
+grub_strtoull
+_gcry_digest_spec_md5
+grub_snprintf
+grub_register_command_prio
+grub_printf
+grub_unregister_command
+grub_error
+grub_env_set

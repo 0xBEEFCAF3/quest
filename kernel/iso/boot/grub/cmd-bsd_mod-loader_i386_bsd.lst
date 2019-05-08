@@ -1,0 +1,6 @@
+*kfreebsd: bsd
+*kopenbsd: bsd
+*knetbsd: bsd
+kfreebsd_loadenv: bsd
+kfreebsd_module: bsd
+kfreebsd_module_elf: bsd

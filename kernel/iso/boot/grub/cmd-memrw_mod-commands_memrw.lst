@@ -1,0 +1,6 @@
+*read_byte: memrw
+*read_word: memrw
+*read_dword: memrw
+write_byte: memrw
+write_word: memrw
+write_dword: memrw

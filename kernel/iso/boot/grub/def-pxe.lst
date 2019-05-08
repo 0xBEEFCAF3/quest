@@ -1,0 +1,4 @@
+grub_pxe_init pxe
+grub_pxe_pxenv pxe
+grub_pxe_unload pxe
+grub_pxe_fini pxe

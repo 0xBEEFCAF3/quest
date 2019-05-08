@@ -1,0 +1,79 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD sysprogs/shell.o
+START GROUP
+LOAD ../libc/libc.a
+END GROUP
+                0x0000000000001074                . = (0x1000 + SIZEOF_HEADERS)
+
+.text           0x0000000000001074      0x1ce
+ *(.text)
+ .text          0x0000000000001074      0x1ce sysprogs/shell.o
+                0x00000000000010fe                putx
+                0x00000000000011aa                _start
+
+.iplt           0x0000000000001248        0x0
+ .iplt          0x0000000000001248        0x0 sysprogs/shell.o
+
+.rodata         0x0000000000001242       0x17
+ *(.rodata)
+ .rodata        0x0000000000001242       0x17 sysprogs/shell.o
+
+.eh_frame       0x000000000000125c      0x170
+ .eh_frame      0x000000000000125c      0x170 sysprogs/shell.o
+
+.rel.dyn        0x00000000000013cc        0x0
+ .rel.got       0x00000000000013cc        0x0 sysprogs/shell.o
+ .rel.iplt      0x00000000000013cc        0x0 sysprogs/shell.o
+                0x00000000000023cc                . = DATA_SEGMENT_ALIGN (0x1000, 0x1000)
+
+.data           0x00000000000023cc        0x0
+ *(.data)
+ .data          0x00000000000023cc        0x0 sysprogs/shell.o
+
+.got            0x00000000000023cc        0x0
+ .got           0x00000000000023cc        0x0 sysprogs/shell.o
+
+.got.plt        0x00000000000023cc        0x0
+ .got.plt       0x00000000000023cc        0x0 sysprogs/shell.o
+
+.igot.plt       0x00000000000023cc        0x0
+ .igot.plt      0x00000000000023cc        0x0 sysprogs/shell.o
+
+.bss            0x00000000000023cc        0x0
+ *(.bss)
+ .bss           0x00000000000023cc        0x0 sysprogs/shell.o
+ *(COMMON)
+OUTPUT(sysprogs/shell elf32-i386)
+
+.debug_info     0x0000000000000000      0x233
+ .debug_info    0x0000000000000000      0x233 sysprogs/shell.o
+
+.debug_abbrev   0x0000000000000000       0xff
+ .debug_abbrev  0x0000000000000000       0xff sysprogs/shell.o
+
+.debug_aranges  0x0000000000000000       0x20
+ .debug_aranges
+                0x0000000000000000       0x20 sysprogs/shell.o
+
+.debug_line     0x0000000000000000       0xc5
+ .debug_line    0x0000000000000000       0xc5 sysprogs/shell.o
+
+.debug_str      0x0000000000000000      0x14d
+ .debug_str     0x0000000000000000      0x14d sysprogs/shell.o
+                                        0x164 (size before relaxing)
+
+.comment        0x0000000000000000       0x23
+ .comment       0x0000000000000000       0x23 sysprogs/shell.o
+                                         0x24 (size before relaxing)
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 sysprogs/shell.o

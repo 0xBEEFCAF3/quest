@@ -1,0 +1,5 @@
+grub_ata_wait_drq ata
+grub_ata_wait_not_busy ata
+grub_ata_init ata
+grub_ata_fini ata
+grub_ata_pio_read ata

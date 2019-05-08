@@ -1,0 +1,2 @@
+grub_cmostest_init cmostest
+grub_cmostest_fini cmostest

@@ -1,0 +1,14 @@
+minix
+grub_strlen
+grub_strcpy
+grub_disk_read
+grub_errno
+grub_memset
+grub_fs_list
+grub_strcmp
+grub_strchr
+grub_malloc
+grub_error
+grub_list_remove
+grub_free
+grub_list_push

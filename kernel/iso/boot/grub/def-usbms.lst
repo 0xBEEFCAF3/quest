@@ -1,0 +1,2 @@
+grub_usbms_fini usbms
+grub_usbms_init usbms
