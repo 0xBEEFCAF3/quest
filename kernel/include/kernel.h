@@ -61,7 +61,8 @@
 
 /* Don't let preprocessed assemby files (*.S) include these lines */
 #ifndef __ASSEMBLER__
-#include "arch/i386.h"
+//#include "arch/i386.h"
+#include "arch/armv7.h"
 #include "smp/spinlock.h"
 #include "smp/semaphore.h"
 
@@ -120,7 +121,7 @@ extern uint16 runqueue[];       /* TSS of next runnable task; 0 if none */
 
 extern quest_tss *lookup_TSS (uint16 selector);
 extern void *lookup_GDT_selector (uint16 selector);
-extern void get_GDT_descriptor (uint16, descriptor *);
+//extern void get_GDT_descriptor (uint16, descriptor *);
 
 extern void panic (char *sz) __attribute__ ((noreturn));
 
@@ -131,8 +132,8 @@ extern void disable_idt (void);
 extern void enable_idt (void);
 extern void enable_idt_entry (uint16);
 extern void set_idt_descriptor_by_addr (uint8, void *, uint8);
-extern void get_idt_descriptor (uint8, idt_descriptor *);
-extern void set_idt_descriptor (uint8, idt_descriptor *);
+//extern void get_idt_descriptor (uint8, idt_descriptor *);
+//extern void set_idt_descriptor (uint8, idt_descriptor *);
 
 typedef uint32 (*vector_handler) (uint8 vector);
 extern void set_vector_handler (uint8 vector, vector_handler func);
@@ -141,7 +142,7 @@ extern vector_handler get_vector_handler (uint8 vector);
 #define MINIMUM_VECTOR_PRIORITY 0x4
 extern u8 find_unused_vector (u8 min_prio);
 extern void init_interrupt_handlers (void);
-
+ 
 void stacktrace (void);
 
 void tsc_delay_usec (uint32 usec);
@@ -180,7 +181,7 @@ extern uint32 kls_pg_table[][1024] __attribute__ ((aligned (4096)));
 
 extern quest_tss idleTSS[MAX_CPUS];
 
-extern tss cpuTSS[MAX_CPUS];
+//extern tss cpuTSS[MAX_CPUS];
 
 extern uint16 idleTSS_selector[MAX_CPUS];
 

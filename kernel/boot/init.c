@@ -16,19 +16,19 @@
  */
 
 #include "boot/multiboot.h"
-#include "arch/i386.h"
-#include "arch/i386-percpu.h"
+//#include "arch/i386.h"
+//#include "arch/i386-percpu.h"
 #include "util/cpuid.h"
 #include "kernel.h"
 #include "fs/filesys.h"
 #include "smp/smp.h"
 #include "mem/mem.h"
 #include "drivers/ata/ata.h"
-#include "drivers/pci/pci.h"
+//#include "drivers/pci/pci.h"
 #include "util/printf.h"
 #include "util/screen.h"
 #include "util/debug.h"
-#include "util/perfmon.h"
+//#include "util/perfmon.h"
 #include "drivers/input/keyboard.h"
 #include "sched/sched.h"
 
@@ -41,128 +41,128 @@ extern uint32 _kernelstart, _physicalkernelstart;
 uint32 stack[1024] __attribute__ ((aligned (0x1000)));
 
 /* Each CPU needs a TSS for the SS0, ESP0 fields */
-static uint16
-alloc_CPU_TSS (tss *tssp)
-{
-  int i;
-  descriptor *ad = (descriptor *)KERN_GDT;
+// static uint16
+// alloc_CPU_TSS (tss *tssp)
+// {
+//   int i;
+//   descriptor *ad = (descriptor *)KERN_GDT;
 
-  /* Search 2KB GDT for first free entry */
-  for (i = 1; i < 256; i++)
-    if (!(ad[i].fPresent))
-      break;
+//   // Search 2KB GDT for first free entry 
+//   for (i = 1; i < 256; i++)
+//     if (!(ad[i].fPresent))
+//       break;
 
-  if (i == 256)
-    panic ("No free selector for TSS");
+//   if (i == 256)
+//     panic ("No free selector for TSS");
 
-  ad[i].uLimit0 = sizeof (tss);
-  ad[i].uLimit1 = 0;
-  ad[i].pBase0 = (uint32) tssp & 0xFFFF;
-  ad[i].pBase1 = ((uint32) tssp >> 16) & 0xFF;
-  ad[i].pBase2 = (uint32) tssp >> 24;
-  ad[i].uType = 0x09;
-  ad[i].uDPL = 0;               /* Only let kernel perform task-switching */
-  ad[i].fPresent = 1;
-  ad[i].f0 = 0;
-  ad[i].fX = 0;
-  ad[i].fGranularity = 0;       /* Set granularity of tss in bytes */
+//   ad[i].uLimit0 = sizeof (tss);
+//   ad[i].uLimit1 = 0;
+//   ad[i].pBase0 = (uint32) tssp & 0xFFFF;
+//   ad[i].pBase1 = ((uint32) tssp >> 16) & 0xFF;
+//   ad[i].pBase2 = (uint32) tssp >> 24;
+//   ad[i].uType = 0x09;
+//   ad[i].uDPL = 0;               // Only let kernel perform task-switching 
+//   ad[i].fPresent = 1;
+//   ad[i].f0 = 0;
+//   ad[i].fX = 0;
+//   ad[i].fGranularity = 0;       // Set granularity of tss in bytes 
 
-  tssp->usSS0 = 0x10;
-  tssp->ulESP0 = (uint32) KERN_STK + 0x1000;
+//   tssp->usSS0 = 0x10;
+//   tssp->ulESP0 = (uint32) KERN_STK + 0x1000;
 
-  return i << 3;
+//   return i << 3;
 
-}
-static uint16
-alloc_idle_TSS (int cpu_num)
-{
-  int i;
-  descriptor *ad = (descriptor *)KERN_GDT;
-  quest_tss *pTSS = (quest_tss *) (&idleTSS[cpu_num]);
-  void idle_task (void);
+// }
+// static uint16
+// alloc_idle_TSS (int cpu_num)
+// {
+//   int i;
+//   descriptor *ad = (descriptor *)KERN_GDT;
+//   quest_tss *pTSS = (quest_tss *) (&idleTSS[cpu_num]);
+//   void idle_task (void);
 
-  /* Search 2KB GDT for first free entry */
-  for (i = 1; i < 256; i++)
-    if (!(ad[i].fPresent))
-      break;
+//   // Search 2KB GDT for first free entry 
+//   for (i = 1; i < 256; i++)
+//     if (!(ad[i].fPresent))
+//       break;
 
-  if (i == 256)
-    panic ("No free selector for TSS");
+//   if (i == 256)
+//     panic ("No free selector for TSS");
 
-  ad[i].uLimit0 = sizeof (idleTSS[cpu_num]) - 1;
-  ad[i].uLimit1 = 0;
-  ad[i].pBase0 = (u32) pTSS & 0xFFFF;
-  ad[i].pBase1 = ((u32) pTSS >> 16) & 0xFF;
-  ad[i].pBase2 = (u32) pTSS >> 24;
-  ad[i].uType = 0x09;           /* 32-bit tss */
-  ad[i].uDPL = 0;               /* Only let kernel perform task-switching */
-  ad[i].fPresent = 1;
-  ad[i].f0 = 0;
-  ad[i].fX = 0;
-  ad[i].fGranularity = 0;       /* Set granularity of tss in bytes */
+//   ad[i].uLimit0 = sizeof (idleTSS[cpu_num]) - 1;
+//   ad[i].uLimit1 = 0;
+//   ad[i].pBase0 = (u32) pTSS & 0xFFFF;
+//   ad[i].pBase1 = ((u32) pTSS >> 16) & 0xFF;
+//   ad[i].pBase2 = (u32) pTSS >> 24;
+//   ad[i].uType = 0x09;           // 32-bit tss 
+//   ad[i].uDPL = 0;               // Only let kernel perform task-switching 
+//   ad[i].fPresent = 1;
+//   ad[i].f0 = 0;
+//   ad[i].fX = 0;
+//   ad[i].fGranularity = 0;       // Set granularity of tss in bytes 
 
-  u32 *stk = map_virtual_page (alloc_phys_frame () | 3);
+//   u32 *stk = map_virtual_page (alloc_phys_frame () | 3);
+//   // TODO: ARM Equivalent of Get physical address of the page directory in CR3 
+//   pTSS->CR3 = (u32) get_pdbr ();
+//   pTSS->initial_EIP = (u32) & idle_task;
+//   stk[1023] = pTSS->initial_EIP;
+//   pTSS->EFLAGS = F_1 | F_IOPL0;
 
-  pTSS->CR3 = (u32) get_pdbr ();
-  pTSS->initial_EIP = (u32) & idle_task;
-  stk[1023] = pTSS->initial_EIP;
-  pTSS->EFLAGS = F_1 | F_IOPL0;
+//   pTSS->ESP = (u32) &stk[1023];
+//   pTSS->EBP = pTSS->ESP;
 
-  pTSS->ESP = (u32) &stk[1023];
-  pTSS->EBP = pTSS->ESP;
-
-  /* Return the index into the GDT for the segment */
-  return i << 3;
-}
+//   // Return the index into the GDT for the segment 
+//   return i << 3;
+// }
 
 
 
 /* Allocate a basic TSS */
-static uint16
-alloc_TSS (void *pPageDirectory, void *pEntry, int mod_num)
-{
+// static uint16
+// alloc_TSS (void *pPageDirectory, void *pEntry, int mod_num)
+// {
 
-  int i;
-  descriptor *ad = (idt + 256); /* Get address of GDT from IDT address */
-  quest_tss *pTSS = (quest_tss *) ul_tss[mod_num];
+//   int i;
+//   descriptor *ad = (idt + 256); // Get address of GDT from IDT address 
+//   quest_tss *pTSS = (quest_tss *) ul_tss[mod_num];
 
-  /* Search 2KB GDT for first free entry */
-  for (i = 1; i < 256; i++)
-    if (!(ad[i].fPresent))
-      break;
+//   // Search 2KB GDT for first free entry 
+//   for (i = 1; i < 256; i++)
+//     if (!(ad[i].fPresent))
+//       break;
 
-  if (i == 256)
-    panic ("No free selector for TSS");
+//   if (i == 256)
+//     panic ("No free selector for TSS");
 
-  ad[i].uLimit0 = sizeof (ul_tss[mod_num]) - 1;
-  ad[i].uLimit1 = 0;
-  ad[i].pBase0 = (u32) pTSS & 0xFFFF;
-  ad[i].pBase1 = ((u32) pTSS >> 16) & 0xFF;
-  ad[i].pBase2 = (u32) pTSS >> 24;
-  ad[i].uType = 0x09;           /* 32-bit tss */
-  ad[i].uDPL = 0;               /* Only let kernel perform task-switching */
-  ad[i].fPresent = 1;
-  ad[i].f0 = 0;
-  ad[i].fX = 0;
-  ad[i].fGranularity = 0;       /* Set granularity of tss in bytes */
+//   ad[i].uLimit0 = sizeof (ul_tss[mod_num]) - 1;
+//   ad[i].uLimit1 = 0;
+//   ad[i].pBase0 = (u32) pTSS & 0xFFFF;
+//   ad[i].pBase1 = ((u32) pTSS >> 16) & 0xFF;
+//   ad[i].pBase2 = (u32) pTSS >> 24;
+//   ad[i].uType = 0x09;           // 32-bit tss 
+//   ad[i].uDPL = 0;               // Only let kernel perform task-switching 
+//   ad[i].fPresent = 1;
+//   ad[i].f0 = 0;
+//   ad[i].fX = 0;
+//   ad[i].fGranularity = 0;       // Set granularity of tss in bytes 
 
-  pTSS->CR3 = (u32) pPageDirectory;
-  pTSS->initial_EIP = (u32) pEntry;
+//   pTSS->CR3 = (u32) pPageDirectory;
+//   pTSS->initial_EIP = (u32) pEntry;
 
-  if (mod_num != 1)
-    pTSS->EFLAGS = F_1 | F_IF | F_IOPL0;
-  else
-    pTSS->EFLAGS = F_1 | F_IF | F_IOPL;       /* Give terminal server access to
-                                               * screen memory */
+//   if (mod_num != 1)
+//     pTSS->EFLAGS = F_1 | F_IF | F_IOPL0;
+//   else
+//     pTSS->EFLAGS = F_1 | F_IF | F_IOPL;       // Give terminal server access to
+//                                                // screen memory 
 
-  pTSS->ESP = 0x400000 - 100;
-  pTSS->EBP = 0x400000 - 100;
+//   pTSS->ESP = 0x400000 - 100;
+//   pTSS->EBP = 0x400000 - 100;
 
-  semaphore_init (&pTSS->Msem, 1, 0);
+//   semaphore_init (&pTSS->Msem, 1, 0);
 
-  /* Return the index into the GDT for the segment */
-  return i << 3;
-}
+//   // Return the index into the GDT for the segment 
+//   return i << 3;
+// }
 
 
 /* Create an address space for boot modules */
@@ -176,7 +176,8 @@ load_module (multiboot_module * pmm, int mod_num)
   /* temporarily map pmm->pe in order to read pph->p_memsz */
   Elf32_Ehdr *pe, *pe0 = map_virtual_page ((uint) pmm->pe | 3);
   Elf32_Phdr *pph = (void *) pe0 + pe0->e_phoff;
-  void *pEntry = (void *) pe0->e_entry;
+  // dharmesh commented this out--not the original developers
+  //void *pEntry = (void *) pe0->e_entry;
   int i, c, j;
   uint32 *stack_virt_addr;
   uint32 page_count = 1;
@@ -260,7 +261,7 @@ load_module (multiboot_module * pmm, int mod_num)
   unmap_virtual_page (stack_virt_addr);
   unmap_virtual_pages (pe, page_count);
 
-  u16 pid = alloc_TSS (plPageDirectory, pEntry, mod_num);
+  u16 pid = 0; //alloc_TSS (plPageDirectory, pEntry, mod_num);
   com1_printf ("module %d loaded: task_id=0x%x\n", mod_num, pid);
 #if QUEST_SCHED==vcpu
   lookup_TSS (pid)->cpu = 0;
@@ -270,6 +271,7 @@ load_module (multiboot_module * pmm, int mod_num)
 
 
 /* Programmable interrupt controller settings */
+/* TODO: Write ARM stuff for GIC and Timer--also have the LAPIC stuff fuck right off.*/
 void
 init_pic (void)
 {
@@ -280,16 +282,16 @@ init_pic (void)
    */
 
   /* Master PIC */
-  outb (0x11, 0x20);            /* 8259 (ICW1) - xxx10x01 */
-  outb (PIC1_BASE_IRQ, 0x21);   /* 8259 (ICW2) - set IRQ0... to int 0x20... */
-  outb (0x04, 0x21);            /* 8259 (ICW3) - connect IRQ2 to slave 8259 */
-  outb (0x0D, 0x21);            /* 8259 (ICW4) - Buffered master, normal EOI, 8086 mode */
+  // outb (0x11, 0x20);            /* 8259 (ICW1) - xxx10x01 */
+  // outb (PIC1_BASE_IRQ, 0x21);   /* 8259 (ICW2) - set IRQ0... to int 0x20... */
+  // outb (0x04, 0x21);            /* 8259 (ICW3) - connect IRQ2 to slave 8259 */
+  // outb (0x0D, 0x21);            /* 8259 (ICW4) - Buffered master, normal EOI, 8086 mode */
 
-  /* Slave PIC */
-  outb (0x11, 0xA0);            /* 8259 (ICW1) - xxx10x01 */
-  outb (PIC2_BASE_IRQ, 0xA1);   /* 8259 (ICW2) - set IRQ8...to int 0x28... */
-  outb (0x02, 0xA1);            /* 8259 (ICW3) - slave ID #2 */
-  outb (0x09, 0xA1);            /* 8259 (ICW4) - Buffered slave, normal EOI, 8086 mode */
+  // /* Slave PIC */
+  // outb (0x11, 0xA0);            /* 8259 (ICW1) - xxx10x01 */
+  // outb (PIC2_BASE_IRQ, 0xA1);   /* 8259 (ICW2) - set IRQ8...to int 0x28... */
+  // outb (0x02, 0xA1);            /* 8259 (ICW3) - slave ID #2 */
+  // outb (0x09, 0xA1);            /* 8259 (ICW4) - Buffered slave, normal EOI, 8086 mode */
 
 }
 
@@ -299,22 +301,23 @@ void
 init_pit (void)
 {
 
-  outb (0x34, 0x43);            /* 8254 (control word) - counter 0, mode 2 */
+  //outb (0x34, 0x43);            /* 8254 (control word) - counter 0, mode 2 */
 
   /* Set interval timer to interrupt once every 1/HZth second */
-  outb ((PIT_FREQ / HZ) & 0xFF, 0x40);  /* counter 0 low byte */
-  outb ((PIT_FREQ / HZ) >> 8, 0x40);    /* counter 0 high byte */
+  //outb ((PIT_FREQ / HZ) & 0xFF, 0x40);  /* counter 0 low byte */
+  //outb ((PIT_FREQ / HZ) >> 8, 0x40);    /* counter 0 high byte */
 }
 
+/* TODO: Replace with simple UART stuff for RPi2*/
 void
 initialize_serial_port (void)
 {
-  outb (0, serial_port1 + 1);          /* Turn off interrupts - Port1 */
+  //outb (0, serial_port1 + 1);          /* Turn off interrupts - Port1 */
 
   /*         PORT 1 - Communication Settings         */
 
-  outb (0x80, serial_port1 + 3);       /* SET DLAB ON */
-  outb (0x03, serial_port1 + 0);       /* Set Baud rate - Divisor Latch Low Byte */
+  //outb (0x80, serial_port1 + 3);       /* SET DLAB ON */
+  //outb (0x03, serial_port1 + 0);       /* Set Baud rate - Divisor Latch Low Byte */
   /* Default 0x03 =  38,400 BPS */
   /*         0x01 = 115,200 BPS */
   /*         0x02 =  57,600 BPS */
@@ -322,11 +325,11 @@ initialize_serial_port (void)
   /*         0x0C =   9,600 BPS */
   /*         0x18 =   4,800 BPS */
   /*         0x30 =   2,400 BPS */
-  outb (0x00, serial_port1 + 1);       /* Set Baud rate - Divisor Latch High Byte */
-  outb (0x03, serial_port1 + 3);       /* 8 Bits, No Parity, 1 Stop Bit */
-  outb (0xC7, serial_port1 + 2);       /* FIFO Control Register */
-  outb (0x0B, serial_port1 + 4);       /* Turn on DTR, RTS, and OUT2 */
-  com1_puts ("COM1 initialized.\n");
+  //outb (0x00, serial_port1 + 1);       /* Set Baud rate - Divisor Latch High Byte */
+  //outb (0x03, serial_port1 + 3);       /* 8 Bits, No Parity, 1 Stop Bit */
+  //outb (0xC7, serial_port1 + 2);       /* FIFO Control Register */
+  //outb (0x0B, serial_port1 + 4);       /* Turn on DTR, RTS, and OUT2 */
+  //com1_puts ("COM1 initialized.\n");
 }
 
 int
@@ -375,7 +378,7 @@ init (multiboot * pmb)
   char brandstring[I386_CPUID_BRAND_STRING_LENGTH];
 
   /* Initialize Bochs I/O debugging */
-  outw (0x8A00, 0x8A00);
+  // outw (0x8A00, 0x8A00);
 
   initialize_serial_port ();
 
@@ -526,10 +529,10 @@ init (multiboot * pmb)
   }
 
   /* Create CPU and IDLE TSSes */
-  for (i = 0; i < num_cpus; i++) {
-    cpuTSS_selector[i] = alloc_CPU_TSS (&cpuTSS[i]);
-    idleTSS_selector[i] = alloc_idle_TSS (i);
-  }
+  //for (i = 0; i < num_cpus; i++) {
+    //cpuTSS_selector[i] = alloc_CPU_TSS (&cpuTSS[i]);
+    //idleTSS_selector[i] = alloc_idle_TSS (i);
+  //}
 
   /* Load modules from GRUB */
   if (!pmb->mods_count)
@@ -541,6 +544,7 @@ init (multiboot * pmb)
 
   /* Remove identity mapping of first 4MB */
   *((uint32 *)get_pdbr()) = 0;
+  /* TODO: Write ARM equivalent of flush_tlb_all */
   flush_tlb_all ();
 
   /* Load the per-CPU TSS for the bootstrap CPU */
@@ -582,7 +586,7 @@ init (multiboot * pmb)
 
   ltr (tss[0]);
   /* task-switch to shell module */
-  asm volatile ("jmp _sw_init_user_task"::"D" (lookup_TSS (tss[0])));
+  //asm volatile ("jmp _sw_init_user_task"::"D" (lookup_TSS (tss[0])));
 
   /* never return */
   panic ("BSP: unreachable");
@@ -596,5 +600,3 @@ init (multiboot * pmb)
  * c-basic-offset: 2
  * End:
  */
-
-/* vi: set et sw=2 sts=2: */

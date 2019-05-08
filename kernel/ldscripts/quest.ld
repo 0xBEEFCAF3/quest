@@ -1,5 +1,10 @@
+/* Give me a 32 bit elf binary. */
 OUTPUT_FORMAT("elf32-i386")
+/* This will change when porting to the Pi. */
 OUTPUT_ARCH(i386)
+/* Might not need the OUTPUT_ARCH directive at all See TerrierOS for reference. */
+/*OUTPUT_ARCH(armv7)*/
+/* The first byte of the .text section, or the very first byte of your loaded program. */
 ENTRY(_start)
 PHDRS {
   physical PT_LOAD FILEHDR PHDRS;

@@ -18,7 +18,7 @@
 #ifndef _PCI_H_
 #define _PCI_H_
 
-#include "arch/i386.h"
+//#include "arch/i386.h"
 #include "smp/apic.h"
 #include "types.h"
 
@@ -190,7 +190,7 @@ pci_read_byte (pci_config_addr a)
   uint16 offs = a.regNum & 0x3;
   uint32 a32, i32;
   a32 = *((uint32 *) &a) & (~0x3);       /* zero out lowest 2 bits */
-  outl (a32, PCI_CONFIG_ADDRESS);
+  //outl (a32, PCI_CONFIG_ADDRESS);
   i32 = inl (PCI_CONFIG_DATA);
   /* offs selects the first, second, third, or fourth byte in i32. */
   return (i32 >> (offs << 3)) & 0xFF;

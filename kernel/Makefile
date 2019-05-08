@@ -1,8 +1,9 @@
 include config.mk
 ARCH=armv7
-PREFIX=
-GRUBLIB = grub/x86_64-pc
-GRUB2 = grub2
+CPU=cortex-a7
+PREFIX=arm-none-eabi-
+#GRUBLIB = grub/x86_64-pc
+#GRUB2 = grub2
 TFTPDIR=tftp
 LD = $(PREFIX)ld -melf_i386
 # ifeq ($(ARCH),armv7)
@@ -10,11 +11,12 @@ LD = $(PREFIX)ld -melf_i386
 # else
 # 	CC = arm-none-eabi-gcc
 # endif
-CC = $(PREFIX)gcc-4.8 # gcc-4.8 -- used as a litmus test
+CC = $(PREFIX)gcc # gcc-4.8 -- used as a litmus test
 TAR = tar
-CFLAGS = -m32 -march=i586 -fno-builtin -fno-stack-protector -fno-strict-aliasing -fno-delete-null-pointer-checks -g -Wall -Wno-attributes -O$(OPT) $(CFG) $(EXTRA_CFLAGS)
-#CFLAGS= -mcpu=$(CPU) -fpic -ffreestanding -fno-builtin -fno-stack-protector -fno-strict-aliasing -fno-delete-null-pointer-checks -g -Wall -Wno-attributes $(DIRECTIVES) -O$(OPT) $(CFG) $(EXTRA_CFLAGS)
-CPPFLAGS = -D_QUEST -Wa,--32 -MMD -Iinclude -Iinclude/drivers/acpi -I. -I../libc/include 
+#CFLAGS = -m32 -march=i586 -fno-builtin -fno-stack-protector -fno-strict-aliasing -fno-delete-null-pointer-checks -g -Wall -Wno-attributes -O$(OPT) $(CFG) $(EXTRA_CFLAGS)
+CFLAGS= -marm -mcpu=$(CPU) -fpic -ffreestanding -fno-builtin -fno-stack-protector -fno-strict-aliasing -nostdlib -fno-delete-null-pointer-checks -g -Wall -Wno-attributes $(DIRECTIVES) -O$(OPT) $(CFG) $(EXTRA_CFLAGS)
+#CPPFLAGS = -D_QUEST -Wa,--32 -MMD -Iinclude -Iinclude/drivers/acpi -I. -I../libc/include 
+CPPFLAGS = -D_QUEST -MMD -Iinclude -Iinclude/drivers/acpi -I. -I../libc/include 
 INDENT = indent
 INDENTFLAGS = -gnu -br -ce --no-tabs
 
@@ -32,7 +34,7 @@ PROGS = quest \
 #	drivers/usb/rtl8187b.o \
 #	drivers/usb/ftdi.o drivers/usb/pl2303.o \
 #	drivers/usb/hub.o drivers/usb/net.o drivers/usb/asix.o \
-#	drivers/usb/uhci_hcd.o drivers/usb/uvc.o drivers/usb/umsc.o \
+#	util/logger.o util/perfmon.o \
 
 OBJS =  boot/boot.o boot/init.o kernel.o module/loader.o \
 	interrupt.o interrupt_handler.o \
@@ -42,7 +44,7 @@ OBJS =  boot/boot.o boot/init.o kernel.o module/loader.o \
 	sched/task.o sched/sched.o sched/sleep.o sched/vcpu.o sched/ipc.o \
 	mem/physical.o mem/virtual.o mem/pow2.o \
 	util/cpuid.o util/printf.o util/screen.o util/debug.o util/circular.o \
-	util/crc32.o util/bitrev.o util/logger.o util/perfmon.o \
+	util/crc32.o util/bitrev.o \
 	drivers/ata/ata.o drivers/ata/diskio.o \
 	drivers/input/keyboard_8042.o drivers/input/keymap.o \
 	drivers/pci/pci.o drivers/pci/pci_irq.o \
@@ -59,6 +61,12 @@ OBJS =  boot/boot.o boot/init.o kernel.o module/loader.o \
 	drivers/sb16/sound.o \
 	drivers/acpi/quest-acpica.o \
 	drivers/eeprom/93cx6.o \
+	drivers/usb/uhci_hcd.o drivers/usb/uvc.o drivers/usb/umsc.o \
+	drivers/usb/hub.o drivers/usb/net.o drivers/usb/asix.o \
+	drivers/usb/ftdi.o drivers/usb/pl2303.o \
+	drivers/usb/rtl8187b.o \
+	drivers/usb/usb_tests.o \
+	drivers/usb/usb.o drivers/usb/enumeration.o \
 	kdb/i386-stub.o
 
 CFILES = $(patsubst %.o,%.c,$(OBJS))

@@ -13,7 +13,7 @@ CFG += -DARM_SPEC
 CFG += -DNO_QUESTV
 
 # Disable USB Support: ARM Specific 
-CFG += -DNO_USB
+# CFG += -DNO_USB
 # Disable "logger" thread
 # CFG += -DNO_LOGGER
 
