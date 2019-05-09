@@ -1,7 +1,0 @@
-grub_gfxterm_fini gfxterm
-grub_gfxterm_decorator_hook gfxterm
-grub_gfxterm_fullscreen gfxterm
-grub_gfxterm_init gfxterm
-grub_gfxterm_schedule_repaint gfxterm
-grub_gfxterm_set_repaint_callback gfxterm
-grub_gfxterm_set_window gfxterm

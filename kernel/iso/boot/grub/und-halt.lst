@@ -1,4 +1,0 @@
-halt
-grub_unregister_extcmd
-grub_halt
-grub_register_extcmd

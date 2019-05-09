@@ -1,2 +1,0 @@
-grub_vbeinfo_init vbeinfo
-grub_vbeinfo_fini vbeinfo

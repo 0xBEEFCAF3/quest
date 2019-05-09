@@ -1,2 +1,0 @@
-grub_pxecmd_init pxecmd
-grub_pxecmd_fini pxecmd

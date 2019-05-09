@@ -1,5 +1,0 @@
-gcry_des
-grub_burn_stack
-grub_cipher_unregister
-memcmp
-grub_cipher_register

@@ -1,7 +1,0 @@
-keystatus
-grub_unregister_extcmd
-grub_term_inputs
-grub_real_dprintf
-grub_error
-grub_register_extcmd
-grub_getkeystatus

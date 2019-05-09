@@ -1,3 +1,0 @@
-grub_linux_fini linux
-linux_vesafb_modes linux
-grub_linux_init linux

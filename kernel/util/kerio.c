@@ -41,6 +41,32 @@ void gets(char * buf, int buflen) {
         buf[buflen-1] = '\0';
 }
 
+void serial_printf(const char * fmt, ...) {
+    va_list args;
+    va_start(args, fmt);
+
+    for (; *fmt != '\0'; fmt++) {
+        if (*fmt == '%') {
+            switch (*(++fmt)) {
+                case '%':
+                    uart_putc('%');
+                    break;
+                case 'd':
+                    uart_puts(itoa(va_arg(args, int), 10));
+                    break;
+                case 'x':
+                    uart_puts(itoa(va_arg(args, int), 16));
+                    break;
+                case 's':
+                    uart_puts(va_arg(args, char *));
+                    break;
+            }
+        } else uart_putc(*fmt);
+    }
+
+    va_end(args);
+}
+
 void printf(const char * fmt, ...) {
     va_list args;
     va_start(args, fmt);

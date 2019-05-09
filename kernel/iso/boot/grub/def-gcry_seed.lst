@@ -1,3 +1,0 @@
-grub_gcry_seed_fini gcry_seed
-_gcry_cipher_spec_seed gcry_seed
-grub_gcry_seed_init gcry_seed

@@ -1,9 +1,0 @@
-usbtest
-grub_usb_control_msg
-grub_strdup
-grub_register_command_prio
-grub_printf
-grub_unregister_command
-grub_usb_iterate
-grub_malloc
-grub_free

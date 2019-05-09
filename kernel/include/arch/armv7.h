@@ -90,13 +90,13 @@ memset (void *p, int ch, uint32 cb)
   return p;
 }
 
-static inline void *
-memcpy (void *pDest, const void *pSrc, uint32 cb)
-{
-  // asm volatile ("cld; rep movsb"
-  //               :"=c" (cb), "=D" (pDest), "=S" (pSrc)
-  //               :"0" (cb), "1" (pDest), "2" (pSrc)
-  //               :"memory","flags");
-  return pDest;
-}
+// static inline void *
+// memcpy (void *pDest, const void *pSrc, uint32 cb)
+// {
+//   // asm volatile ("cld; rep movsb"
+//   //               :"=c" (cb), "=D" (pDest), "=S" (pSrc)
+//   //               :"0" (cb), "1" (pDest), "2" (pSrc)
+//   //               :"memory","flags");
+//   return pDest;
+// }
 #endif

@@ -1,2 +1,0 @@
-grub_lspci_init lspci
-grub_lspci_fini lspci

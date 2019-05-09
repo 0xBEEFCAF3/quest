@@ -1,2 +1,0 @@
-grub_part_gpt_init part_gpt
-grub_part_gpt_fini part_gpt

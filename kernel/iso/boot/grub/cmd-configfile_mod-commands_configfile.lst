@@ -1,3 +1,0 @@
-configfile: configfile
-source: configfile
-.: configfile

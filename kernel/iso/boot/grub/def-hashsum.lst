@@ -1,3 +1,0 @@
-aliases hashsum
-grub_hashsum_fini hashsum
-grub_hashsum_init hashsum

@@ -1,2 +1,0 @@
-grub_dm_nv_init dm_nv
-grub_dm_nv_fini dm_nv

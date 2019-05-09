@@ -6,7 +6,7 @@ static timer_registers_t * timer_regs;
 
 static void timer_irq_handler(void) {
     uart_puts("timeout :)\n");
-    timer_set(3000000);
+    timer_set(10000);
 }
 
 static void timer_irq_clearer(void) {

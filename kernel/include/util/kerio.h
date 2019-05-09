@@ -11,5 +11,6 @@ extern void puts(const char * s);
 extern void gets(char * buf, int buflen);
 
 extern void printf(const char * fmt, ...);
+extern void serial_printf(const char * fmt, ...);
 
 #endif

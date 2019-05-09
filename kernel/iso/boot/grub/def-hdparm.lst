@@ -1,3 +1,0 @@
-grub_hdparm_init hdparm
-hexdump hdparm
-grub_hdparm_fini hdparm

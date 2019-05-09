@@ -1,4 +1,0 @@
-grub_arg_parse extcmd
-grub_arg_show_help extcmd
-grub_unregister_extcmd extcmd
-grub_register_extcmd extcmd

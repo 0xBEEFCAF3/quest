@@ -1,2 +1,0 @@
-grub_nilfs2_fini nilfs2
-grub_nilfs2_init nilfs2

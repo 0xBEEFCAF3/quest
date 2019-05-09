@@ -9,16 +9,18 @@
 #include <raspi/timer.h>
 #include <raspi/process.h>
 #include <common/dstdlib.h>
-
 #include <raspi/mailbox.h>
+#include "types.h"
+#include "kernel.h"
 
-void test(void) {
-    int i = 0;
-    while (i < 10) {
-        printf("test %d\n", i++);
-        udelay(1000000);
-    }
-}
+
+// void test(void) {
+//     int i = 0;
+//     while (i < 10) {
+//         printf("test %d\n", i++);
+//         udelay(1000000);
+//     }
+// }
 
 void kernel_main(uint32_t r0, uint32_t r1, uint32_t r2)
 {
@@ -39,7 +41,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t r2)
     interrupts_init();
     uart_puts("Now initializing timer.\r\n");
     timer_init();
-    printf("\nMemOS: Welcome *** System Memory is: %dMB\r\n", mem_size/(1024*1024));
+    serial_printf("\nQuestOS: Welcome *** System Memory is: %dMB\r\n", mem_size/(1024*1024));
 
 
     property_message_tag_t mtag[1];
@@ -49,7 +51,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t r2)
     if(send_messages(mtag) != 0) {
         uart_puts("In kernel send_messages failed for mtag\r\n");
     } else {
-        printf("\r\nVideoCore Memory: %dMB\r\n", (mtag[0].value_buffer.mb_vc_mem) / (1000*1000));
+        serial_printf("\r\nVideoCore Memory: %dMB\r\n", (mtag[0].value_buffer.mb_vc_mem) / (1000*1000));
     }
 
     property_message_tag_t tag[1];
@@ -67,18 +69,18 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t r2)
 
     uart_puts("Now setting timer.\r\n");
     uart_puts("INITIALIZING SCHEDULER...");
-    process_init();
+    //process_init();
     uart_puts("DONE\n");
 
     uart_puts("Hello, kernel World!\n");
 
-    create_kernel_thread(test, "TEST", 2);
+    //create_kernel_thread(test, "TEST", 4);
 
     while (1) {
-        gets(buf,256);
-        puts(buf);
-        putc('\n');
-        //uart_puts("main %d\n", i++);
-        //udelay(1000000);
+        // gets(buf,256);
+        // puts(buf);
+        // putc('\n');
+        serial_printf("main %d\r\n", i++);
+        udelay(10000000);
     }
 }

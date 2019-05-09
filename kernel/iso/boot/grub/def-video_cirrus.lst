@@ -1,2 +1,0 @@
-grub_video_cirrus_fini video_cirrus
-grub_video_cirrus_init video_cirrus

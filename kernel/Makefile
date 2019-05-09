@@ -19,7 +19,7 @@ TAR = tar
 CFLAGS= -marm -mcpu=$(CPU) -fpic -ffreestanding -fno-builtin -fno-stack-protector -fno-strict-aliasing -nostdlib -fno-delete-null-pointer-checks -g -Wall -Wno-attributes $(DIRECTIVES) -O$(OPT) $(CFG) $(EXTRA_CFLAGS)
 #CPPFLAGS = -D_QUEST -Wa,--32 -MMD -Iinclude -Iinclude/drivers/acpi -I. -I../libc/include 
 # TODO: You will need libc ported before getting sysprogs/shell to work.
-CPPFLAGS = -D_QUEST -MMD -Iinclude
+CPPFLAGS = -D_QUEST -MMD -Iinclude -I../libc/include
 INDENT = indent
 INDENTFLAGS = -gnu -br -ce --no-tabs
 

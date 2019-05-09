@@ -1,3 +1,0 @@
-grub_search_label_init search_label
-grub_search_label_fini search_label
-grub_search_label search_label

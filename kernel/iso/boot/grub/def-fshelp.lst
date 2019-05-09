@@ -1,3 +1,0 @@
-grub_fshelp_find_file fshelp
-grub_fshelp_read_file fshelp
-grub_fshelp_log2blksize fshelp

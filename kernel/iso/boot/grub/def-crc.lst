@@ -1,3 +1,0 @@
-grub_crc_fini crc
-grub_crc_init crc
-grub_getcrc32 crc

@@ -1,5 +1,0 @@
-lsmmap
-grub_machine_mmap_iterate
-grub_register_command_prio
-grub_printf
-grub_unregister_command

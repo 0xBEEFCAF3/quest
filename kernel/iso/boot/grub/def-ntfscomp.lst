@@ -1,2 +1,0 @@
-grub_ntfscomp_init ntfscomp
-grub_ntfscomp_fini ntfscomp

@@ -1,2 +1,0 @@
-grub_lvm_fini lvm
-grub_lvm_init lvm

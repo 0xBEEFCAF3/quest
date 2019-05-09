@@ -1,2 +1,0 @@
-grub_sleep_init sleep
-grub_sleep_fini sleep

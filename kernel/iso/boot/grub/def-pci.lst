@@ -1,6 +1,0 @@
-grub_dma_get_virt pci
-grub_dma_free pci
-grub_pci_make_address pci
-grub_pci_iterate pci
-grub_memalign_dma32 pci
-grub_dma_get_phys pci

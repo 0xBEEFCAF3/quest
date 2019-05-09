@@ -1,3 +1,0 @@
-pci_registers setpci
-grub_setpci_fini setpci
-grub_setpci_init setpci

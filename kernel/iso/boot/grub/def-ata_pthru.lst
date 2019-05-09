@@ -1,2 +1,0 @@
-grub_ata_pthru_fini ata_pthru
-grub_ata_pthru_init ata_pthru
