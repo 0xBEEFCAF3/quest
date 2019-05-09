@@ -19,126 +19,135 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0xb3f0
+.text           0x0000000000008000     0xb6a8
  *(.text.boot)
  .text.boot     0x0000000000008000     0x8080 boot/boot.o
                 0x0000000000010000                _start
  *(.text)
  .text          0x0000000000010080        0x0 boot/boot.o
- .text          0x0000000000010080      0x218 boot/init.o
-                0x0000000000010080                kernel_main
- .text          0x0000000000010298       0xc0 atag/atag.o
-                0x0000000000010298                get_mem_size
- .text          0x0000000000010358      0x24c drivers/uart/uart.o
-                0x0000000000010358                mmio_write
-                0x0000000000010384                mmio_read
-                0x00000000000103ac                delay
-                0x00000000000103d8                uart_init
-                0x00000000000104d8                read_flags
-                0x0000000000010508                uart_putc
-                0x0000000000010558                uart_getc
- .text          0x00000000000105a4      0x95c mem/mem.o
-                0x00000000000105a4                append_page_list
-                0x000000000001062c                push_page_list
-                0x00000000000106a4                peek_page_list
-                0x00000000000106cc                pop_page_list
-                0x0000000000010750                size_page_list
-                0x0000000000010778                next_page_list
-                0x00000000000107a0                mem_init
-                0x0000000000010a64                alloc_page
-                0x0000000000010b18                free_page
-                0x0000000000010be8                kmalloc
-                0x0000000000010dc0                kfree
- .text          0x0000000000010f00      0x4cc gpu/gpu.o
-                0x0000000000010f00                font
-                0x0000000000010f38                write_pixel
-                0x0000000000010fbc                gpu_putc
-                0x00000000000112e0                gpu_init
- .text          0x00000000000113cc      0x548 common/dstdlib.o
-                0x00000000000113cc                div
-                0x00000000000113fc                divmod
-                0x0000000000011460                memcpy
-                0x00000000000114cc                bzero
-                0x0000000000011520                itoa
-                0x0000000000011810                atoi
- .text          0x0000000000011914      0x5bc raspi/mailbox.o
-                0x0000000000011914                mailbox_read
-                0x0000000000011988                mailbox_send
-                0x0000000000011af0                send_messages
- .text          0x0000000000011ed0      0x6e8 raspi/interrupts.o
-                0x0000000000011ed0                INTERRUPTS_ENABLED
-                0x0000000000011f0c                ENABLE_INTERRUPTS
-                0x0000000000011f2c                DISABLE_INTERRUPTS
-                0x0000000000011f4c                interrupts_init
-                0x0000000000011ff0                irq_handler
-                0x0000000000012148                reset_handler
-                0x000000000001216c                prefetch_abort_handler
-                0x0000000000012190                data_abort_handler
-                0x00000000000121b4                undefined_instruction_handler
-                0x00000000000121d4                software_interrupt_handler
-                0x00000000000121f4                fast_irq_handler
-                0x0000000000012218                register_irq_handler
-                0x00000000000123ec                unregister_irq_handler
- .text          0x00000000000125b8      0x178 raspi/timer.o
-                0x0000000000012610                timer_init
-                0x000000000001265c                timer_set
-                0x00000000000126a8                udelay
- .text          0x0000000000012730      0x5c8 raspi/process.o
-                0x0000000000012730                append_pcb_list
-                0x00000000000127b8                push_pcb_list
-                0x0000000000012830                peek_pcb_list
-                0x0000000000012858                pop_pcb_list
-                0x00000000000128dc                size_pcb_list
-                0x0000000000012904                next_pcb_list
-                0x000000000001292c                schedule
-                0x00000000000129d0                process_init
-                0x0000000000012bac                create_kernel_thread
- .text          0x0000000000012cf8      0x214 raspi/framebuffer.o
-                0x0000000000012cf8                framebuffer_init
- .text          0x0000000000012f0c       0x94 raspi/interrupt_vector.o
-                0x0000000000012f48                move_exception_vector
- .text          0x0000000000012fa0       0x28 raspi/process_asm.o
-                0x0000000000012fa0                switch_to_thread
- .text          0x0000000000012fc8      0x428 util/kerio.o
-                0x0000000000012fc8                getc
-                0x0000000000012fe0                putc
-                0x0000000000013008                uart_puts
-                0x0000000000013068                puts
-                0x00000000000130c8                gets
-                0x0000000000013190                serial_printf
-                0x00000000000132c0                printf
+ .text          0x0000000000010080      0x29c boot/init.o
+                0x0000000000010080                test
+                0x00000000000100dc                kernel_main
+ .text          0x000000000001031c       0xc0 atag/atag.o
+                0x000000000001031c                get_mem_size
+ .text          0x00000000000103dc      0x24c drivers/uart/uart.o
+                0x00000000000103dc                mmio_write
+                0x0000000000010408                mmio_read
+                0x0000000000010430                delay
+                0x000000000001045c                uart_init
+                0x000000000001055c                read_flags
+                0x000000000001058c                uart_putc
+                0x00000000000105dc                uart_getc
+ .text          0x0000000000010628      0x95c mem/mem.o
+                0x0000000000010628                append_page_list
+                0x00000000000106b0                push_page_list
+                0x0000000000010728                peek_page_list
+                0x0000000000010750                pop_page_list
+                0x00000000000107d4                size_page_list
+                0x00000000000107fc                next_page_list
+                0x0000000000010824                mem_init
+                0x0000000000010ae8                alloc_page
+                0x0000000000010b9c                free_page
+                0x0000000000010c6c                kmalloc
+                0x0000000000010e44                kfree
+ .text          0x0000000000010f84      0x4cc gpu/gpu.o
+                0x0000000000010f84                font
+                0x0000000000010fbc                write_pixel
+                0x0000000000011040                gpu_putc
+                0x0000000000011364                gpu_init
+ .text          0x0000000000011450      0x548 common/dstdlib.o
+                0x0000000000011450                div
+                0x0000000000011480                divmod
+                0x00000000000114e4                memcpy
+                0x0000000000011550                bzero
+                0x00000000000115a4                itoa
+                0x0000000000011894                atoi
+ .text          0x0000000000011998      0x5bc raspi/mailbox.o
+                0x0000000000011998                mailbox_read
+                0x0000000000011a0c                mailbox_send
+                0x0000000000011b74                send_messages
+ .text          0x0000000000011f54      0x6e8 raspi/interrupts.o
+                0x0000000000011f54                INTERRUPTS_ENABLED
+                0x0000000000011f90                ENABLE_INTERRUPTS
+                0x0000000000011fb0                DISABLE_INTERRUPTS
+                0x0000000000011fd0                interrupts_init
+                0x0000000000012074                irq_handler
+                0x00000000000121cc                reset_handler
+                0x00000000000121f0                prefetch_abort_handler
+                0x0000000000012214                data_abort_handler
+                0x0000000000012238                undefined_instruction_handler
+                0x0000000000012258                software_interrupt_handler
+                0x0000000000012278                fast_irq_handler
+                0x000000000001229c                register_irq_handler
+                0x0000000000012470                unregister_irq_handler
+ .text          0x000000000001263c      0x178 raspi/timer.o
+                0x0000000000012694                timer_init
+                0x00000000000126e0                timer_set
+                0x000000000001272c                udelay
+ .text          0x00000000000127b4      0x7ec raspi/process.o
+                0x00000000000127b4                append_pcb_list
+                0x000000000001283c                push_pcb_list
+                0x00000000000128b4                peek_pcb_list
+                0x00000000000128dc                pop_pcb_list
+                0x0000000000012960                size_pcb_list
+                0x0000000000012988                next_pcb_list
+                0x00000000000129b0                schedule
+                0x0000000000012a60                process_init
+                0x0000000000012c3c                create_kernel_thread
+                0x0000000000012d88                spin_init
+                0x0000000000012db0                spin_lock
+                0x0000000000012de0                spin_unlock
+                0x0000000000012e08                mutex_init
+                0x0000000000012e64                mutex_lock
+                0x0000000000012f1c                mutex_unlock
+ .text          0x0000000000012fa0      0x214 raspi/framebuffer.o
+                0x0000000000012fa0                framebuffer_init
+ .text          0x00000000000131b4       0x94 raspi/interrupt_vector.o
+                0x00000000000131f0                move_exception_vector
+ .text          0x0000000000013248       0x28 raspi/process_asm.o
+                0x0000000000013248                switch_to_thread
+ .text          0x0000000000013270       0x10 raspi/lock_asm.o
+                0x0000000000013270                try_lock
+ .text          0x0000000000013280      0x428 util/kerio.o
+                0x0000000000013280                getc
+                0x0000000000013298                putc
+                0x00000000000132c0                uart_puts
+                0x0000000000013320                puts
+                0x0000000000013380                gets
+                0x0000000000013448                serial_printf
+                0x0000000000013578                printf
 
-.glue_7         0x00000000000133f0        0x0
+.glue_7         0x00000000000136a8        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x00000000000133f0        0x0
+.glue_7t        0x00000000000136a8        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x00000000000133f0        0x0
+.vfp11_veneer   0x00000000000136a8        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x00000000000133f0        0x0
+.v4_bx          0x00000000000136a8        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x00000000000133f0        0x0
+.iplt           0x00000000000136a8        0x0
  .iplt          0x0000000000000000        0x0 boot/boot.o
                 0x0000000000014000                . = ALIGN (0x1000)
                 0x0000000000014000                __text_end = .
                 0x0000000000014000                __rodata_start = .
 
-.rodata         0x0000000000014000      0x81c
+.rodata         0x0000000000014000      0x848
  *(.rodata)
- .rodata        0x0000000000014000      0x188 boot/init.o
- .rodata        0x0000000000014188       0x50 atag/atag.o
- .rodata        0x00000000000141d8       0x40 mem/mem.o
- .rodata        0x0000000000014218      0x42c gpu/gpu.o
- .rodata        0x0000000000014644       0x30 raspi/mailbox.o
- .rodata        0x0000000000014674       0xf8 raspi/interrupts.o
- .rodata        0x000000000001476c        0xc raspi/timer.o
- .rodata        0x0000000000014778        0x8 raspi/process.o
- .rodata        0x0000000000014780       0x9c raspi/framebuffer.o
+ .rodata        0x0000000000014000      0x1b4 boot/init.o
+ .rodata        0x00000000000141b4       0x50 atag/atag.o
+ .rodata        0x0000000000014204       0x40 mem/mem.o
+ .rodata        0x0000000000014244      0x42c gpu/gpu.o
+ .rodata        0x0000000000014670       0x30 raspi/mailbox.o
+ .rodata        0x00000000000146a0       0xf8 raspi/interrupts.o
+ .rodata        0x0000000000014798        0xc raspi/timer.o
+ .rodata        0x00000000000147a4        0x8 raspi/process.o
+ .rodata        0x00000000000147ac       0x9c raspi/framebuffer.o
 
-.rel.dyn        0x000000000001481c        0x0
+.rel.dyn        0x0000000000014848        0x0
  .rel.iplt      0x0000000000000000        0x0 boot/boot.o
  .rel.got       0x0000000000000000        0x0 boot/boot.o
                 0x0000000000015000                . = ALIGN (0x1000)
@@ -161,6 +170,7 @@ Linker script and memory map
  .data          0x0000000000015004        0x0 raspi/framebuffer.o
  .data          0x0000000000015004        0x0 raspi/interrupt_vector.o
  .data          0x0000000000015004        0x0 raspi/process_asm.o
+ .data          0x0000000000015004        0x0 raspi/lock_asm.o
  .data          0x0000000000015004        0x0 util/kerio.o
 
 .igot.plt       0x0000000000015004        0x0
@@ -193,6 +203,7 @@ Linker script and memory map
  .bss           0x0000000000016274        0x0 raspi/framebuffer.o
  .bss           0x0000000000016274        0x0 raspi/interrupt_vector.o
  .bss           0x0000000000016274        0x0 raspi/process_asm.o
+ .bss           0x0000000000016274        0x0 raspi/lock_asm.o
  .bss           0x0000000000016274        0x0 util/kerio.o
  COMMON         0x0000000000016274        0xc mem/mem.o
                 0x0000000000016274                free_pages
@@ -205,6 +216,8 @@ Linker script and memory map
                 0x0000000000017000                . = ALIGN (0x1000)
                 0x0000000000017000                __bss_end = .
                 0x0000000000017000                __end = .
+LOAD ./include/libuspi.a
+LOAD ./include/libuspienv.a
 LOAD boot/boot.o
 LOAD boot/init.o
 LOAD atag/atag.o
@@ -219,6 +232,7 @@ LOAD raspi/process.o
 LOAD raspi/framebuffer.o
 LOAD raspi/interrupt_vector.o
 LOAD raspi/process_asm.o
+LOAD raspi/lock_asm.o
 LOAD util/kerio.o
 OUTPUT(quest elf32-littlearm)
 
@@ -253,7 +267,9 @@ OUTPUT(quest elf32-littlearm)
  .ARM.attributes
                 0x00000000000002b1       0x14 raspi/process_asm.o
  .ARM.attributes
-                0x00000000000002c5       0x3b util/kerio.o
+                0x00000000000002c5       0x14 raspi/lock_asm.o
+ .ARM.attributes
+                0x00000000000002d9       0x3b util/kerio.o
 
 .comment        0x0000000000000000       0x11
  .comment       0x0000000000000000       0x11 boot/init.o
@@ -270,19 +286,19 @@ OUTPUT(quest elf32-littlearm)
  .comment       0x0000000000000000       0x12 raspi/framebuffer.o
  .comment       0x0000000000000000       0x12 util/kerio.o
 
-.debug_info     0x0000000000000000     0x2891
- .debug_info    0x0000000000000000      0x418 boot/init.o
- .debug_info    0x0000000000000418      0x212 atag/atag.o
- .debug_info    0x000000000000062a      0x454 drivers/uart/uart.o
- .debug_info    0x0000000000000a7e      0x618 mem/mem.o
- .debug_info    0x0000000000001096      0x2f4 gpu/gpu.o
- .debug_info    0x000000000000138a      0x2d2 common/dstdlib.o
- .debug_info    0x000000000000165c      0x404 raspi/mailbox.o
- .debug_info    0x0000000000001a60      0x30a raspi/interrupts.o
- .debug_info    0x0000000000001d6a      0x216 raspi/timer.o
- .debug_info    0x0000000000001f80      0x46f raspi/process.o
- .debug_info    0x00000000000023ef      0x2ac raspi/framebuffer.o
- .debug_info    0x000000000000269b      0x1f6 util/kerio.o
+.debug_info     0x0000000000000000     0x29e0
+ .debug_info    0x0000000000000000      0x416 boot/init.o
+ .debug_info    0x0000000000000416      0x212 atag/atag.o
+ .debug_info    0x0000000000000628      0x454 drivers/uart/uart.o
+ .debug_info    0x0000000000000a7c      0x618 mem/mem.o
+ .debug_info    0x0000000000001094      0x2f4 gpu/gpu.o
+ .debug_info    0x0000000000001388      0x2d2 common/dstdlib.o
+ .debug_info    0x000000000000165a      0x404 raspi/mailbox.o
+ .debug_info    0x0000000000001a5e      0x30a raspi/interrupts.o
+ .debug_info    0x0000000000001d68      0x216 raspi/timer.o
+ .debug_info    0x0000000000001f7e      0x5c0 raspi/process.o
+ .debug_info    0x000000000000253e      0x2ac raspi/framebuffer.o
+ .debug_info    0x00000000000027ea      0x1f6 util/kerio.o
 
 .debug_abbrev   0x0000000000000000      0xea0
  .debug_abbrev  0x0000000000000000      0x138 boot/init.o
@@ -324,56 +340,56 @@ OUTPUT(quest elf32-littlearm)
  .debug_aranges
                 0x0000000000000160       0x20 util/kerio.o
 
-.debug_line     0x0000000000000000      0xe77
- .debug_line    0x0000000000000000      0x127 boot/init.o
- .debug_line    0x0000000000000127       0xc4 atag/atag.o
- .debug_line    0x00000000000001eb       0xf9 drivers/uart/uart.o
- .debug_line    0x00000000000002e4      0x1d5 mem/mem.o
- .debug_line    0x00000000000004b9      0x159 gpu/gpu.o
- .debug_line    0x0000000000000612      0x159 common/dstdlib.o
- .debug_line    0x000000000000076b      0x17d raspi/mailbox.o
- .debug_line    0x00000000000008e8      0x16d raspi/interrupts.o
- .debug_line    0x0000000000000a55       0xde raspi/timer.o
- .debug_line    0x0000000000000b33      0x125 raspi/process.o
- .debug_line    0x0000000000000c58       0xf1 raspi/framebuffer.o
- .debug_line    0x0000000000000d49      0x12e util/kerio.o
+.debug_line     0x0000000000000000      0xed4
+ .debug_line    0x0000000000000000      0x138 boot/init.o
+ .debug_line    0x0000000000000138       0xc4 atag/atag.o
+ .debug_line    0x00000000000001fc       0xf9 drivers/uart/uart.o
+ .debug_line    0x00000000000002f5      0x1d5 mem/mem.o
+ .debug_line    0x00000000000004ca      0x159 gpu/gpu.o
+ .debug_line    0x0000000000000623      0x159 common/dstdlib.o
+ .debug_line    0x000000000000077c      0x17d raspi/mailbox.o
+ .debug_line    0x00000000000008f9      0x16d raspi/interrupts.o
+ .debug_line    0x0000000000000a66       0xde raspi/timer.o
+ .debug_line    0x0000000000000b44      0x171 raspi/process.o
+ .debug_line    0x0000000000000cb5       0xf1 raspi/framebuffer.o
+ .debug_line    0x0000000000000da6      0x12e util/kerio.o
 
-.debug_str      0x0000000000000000     0x102d
- .debug_str     0x0000000000000000      0x3a8 boot/init.o
-                                        0x407 (size before relaxing)
- .debug_str     0x00000000000003a8       0x19 atag/atag.o
+.debug_str      0x0000000000000000     0x109b
+ .debug_str     0x0000000000000000      0x3ad boot/init.o
+                                        0x40c (size before relaxing)
+ .debug_str     0x00000000000003ad       0x19 atag/atag.o
                                         0x1f7 (size before relaxing)
- .debug_str     0x00000000000003c1      0x306 drivers/uart/uart.o
+ .debug_str     0x00000000000003c6      0x306 drivers/uart/uart.o
                                         0x461 (size before relaxing)
- .debug_str     0x00000000000006c7      0x1eb mem/mem.o
+ .debug_str     0x00000000000006cc      0x1eb mem/mem.o
                                         0x407 (size before relaxing)
- .debug_str     0x00000000000008b2       0xc6 gpu/gpu.o
+ .debug_str     0x00000000000008b7       0xc6 gpu/gpu.o
                                         0x22e (size before relaxing)
- .debug_str     0x0000000000000978       0x85 common/dstdlib.o
+ .debug_str     0x000000000000097d       0x85 common/dstdlib.o
                                         0x1de (size before relaxing)
- .debug_str     0x00000000000009fd       0xf0 raspi/mailbox.o
+ .debug_str     0x0000000000000a02       0xf0 raspi/mailbox.o
                                         0x454 (size before relaxing)
- .debug_str     0x0000000000000aed      0x23c raspi/interrupts.o
+ .debug_str     0x0000000000000af2      0x23c raspi/interrupts.o
                                         0x3b5 (size before relaxing)
- .debug_str     0x0000000000000d29       0xf6 raspi/timer.o
+ .debug_str     0x0000000000000d2e       0xf6 raspi/timer.o
                                         0x27a (size before relaxing)
- .debug_str     0x0000000000000e1f      0x195 raspi/process.o
-                                        0x30e (size before relaxing)
- .debug_str     0x0000000000000fb4       0x25 raspi/framebuffer.o
+ .debug_str     0x0000000000000e24      0x1fe raspi/process.o
+                                        0x383 (size before relaxing)
+ .debug_str     0x0000000000001022       0x25 raspi/framebuffer.o
                                         0x3c6 (size before relaxing)
- .debug_str     0x0000000000000fd9       0x54 util/kerio.o
+ .debug_str     0x0000000000001047       0x54 util/kerio.o
                                         0x1ad (size before relaxing)
 
-.debug_frame    0x0000000000000000      0x890
- .debug_frame   0x0000000000000000       0x2c boot/init.o
- .debug_frame   0x000000000000002c       0x2c atag/atag.o
- .debug_frame   0x0000000000000058       0xc8 drivers/uart/uart.o
- .debug_frame   0x0000000000000120      0x14c mem/mem.o
- .debug_frame   0x000000000000026c       0x84 gpu/gpu.o
- .debug_frame   0x00000000000002f0       0xa4 common/dstdlib.o
- .debug_frame   0x0000000000000394       0x74 raspi/mailbox.o
- .debug_frame   0x0000000000000408      0x1bc raspi/interrupts.o
- .debug_frame   0x00000000000005c4       0x90 raspi/timer.o
- .debug_frame   0x0000000000000654      0x120 raspi/process.o
- .debug_frame   0x0000000000000774       0x30 raspi/framebuffer.o
- .debug_frame   0x00000000000007a4       0xec util/kerio.o
+.debug_frame    0x0000000000000000      0x950
+ .debug_frame   0x0000000000000000       0x48 boot/init.o
+ .debug_frame   0x0000000000000048       0x2c atag/atag.o
+ .debug_frame   0x0000000000000074       0xc8 drivers/uart/uart.o
+ .debug_frame   0x000000000000013c      0x14c mem/mem.o
+ .debug_frame   0x0000000000000288       0x84 gpu/gpu.o
+ .debug_frame   0x000000000000030c       0xa4 common/dstdlib.o
+ .debug_frame   0x00000000000003b0       0x74 raspi/mailbox.o
+ .debug_frame   0x0000000000000424      0x1bc raspi/interrupts.o
+ .debug_frame   0x00000000000005e0       0x90 raspi/timer.o
+ .debug_frame   0x0000000000000670      0x1c4 raspi/process.o
+ .debug_frame   0x0000000000000834       0x30 raspi/framebuffer.o
+ .debug_frame   0x0000000000000864       0xec util/kerio.o

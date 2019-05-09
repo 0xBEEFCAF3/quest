@@ -12,20 +12,26 @@
 #include <raspi/mailbox.h>
 #include "types.h"
 #include "kernel.h"
+#include <uspi.h>
 
+void test(void) {
+    int i = 0;
+    while (i < 10) {
+        printf("test %d\n", i++);
+        udelay(1000000);
+    }
+}
 
-// void test(void) {
-//     int i = 0;
-//     while (i < 10) {
-//         printf("test %d\n", i++);
-//         udelay(1000000);
-//     }
-// }
-
+// NB: Our implementation of the code above is not multiboot compliant because we haven't
+// identified a bootloader for ARM that conforms to the multiboot spec.
+// Kernel starts at 256th physical frame
+// * See quest.ld
+// NOTE: This is not true for our implementation of kernel_main.
+// If specific Quest features operate under this assumption we must revisit this
 void kernel_main(uint32_t r0, uint32_t r1, uint32_t r2)
 {
     int i = 0;
-    char buf[256];
+    //char buf[256];
     // Declare as unused
     (void) r0;
     (void) r1;
@@ -42,7 +48,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t r2)
     uart_puts("Now initializing timer.\r\n");
     timer_init();
     serial_printf("\nQuestOS: Welcome *** System Memory is: %dMB\r\n", mem_size/(1024*1024));
-
+    printf("GPUDB\r\n");
 
     property_message_tag_t mtag[1];
     mtag[0].proptag = MB_GET_VC_MEM;
@@ -61,11 +67,12 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t r2)
     tag[0].value_buffer.mb_board_rev = 6140;
     // Send over the initialization
     if (send_messages(tag) != 0) {
+        printf("Failed get board rev\r\n");
         uart_puts("Failed get_revision_id\r\n");
     } 
     uint32_t bid = 6140;
     bid = tag[0].value_buffer.mb_board_rev;
-    printf("\r\nBoard Revision ID: %x\r\n", bid);
+    serial_printf("\r\nBoard Revision ID: %x\r\n", bid);
 
     uart_puts("Now setting timer.\r\n");
     uart_puts("INITIALIZING SCHEDULER...");
@@ -75,6 +82,8 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t r2)
     uart_puts("Hello, kernel World!\n");
 
     //create_kernel_thread(test, "TEST", 4);
+    //uart_puts("Initializing keyboard:\r\n");
+    //serial_printf("Result keyboard: %d\r\n", USPiInitialize());
 
     while (1) {
         // gets(buf,256);

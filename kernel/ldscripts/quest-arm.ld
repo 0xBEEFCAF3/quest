@@ -53,5 +53,8 @@ SECTIONS
     }
     . = ALIGN(4096); /* align to page size */
     __bss_end = .;
+    /* Marks the beginning of a region of memory just after the kernel image ends that we will reserve in mem.c
+     * to store an array of page metadata.
+     */
     __end = .;
 }

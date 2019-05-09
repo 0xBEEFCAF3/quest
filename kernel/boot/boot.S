@@ -84,8 +84,12 @@ _start:
      * it enters the halt procedure where it loops forever doing nothing.
      */
     // Call kernel_main
-    ldr r3, =kernel_main
-    blx r3
+    // Fixing blx r3 using bl instead. Get gcc to shut up.
+    mov r2, #0x100
+    bl kernel_main
+    b halt
+    //ldr r3, =kernel_main
+    //blx r3
  
     // halt
 halt:

@@ -57,7 +57,7 @@ void mem_init(atag_t *atags) {
     // Start with kernel pages
     kernel_pages = ((uint32_t)&__end) / PAGE_SIZE;
     for (i = 0; i < kernel_pages; i++) {
-        all_pages_array[i].vaddr_mapped = i * PAGE_SIZE;    // Identity map the kernel pages
+        all_pages_array[i].vaddr_mapped = i * PAGE_SIZE;    // Identity map the kernel pages so we have "virtual" memory but not really.
         all_pages_array[i].flags.allocated = 1;
         all_pages_array[i].flags.kernel_page = 1;
     }
@@ -96,7 +96,7 @@ void * alloc_page(void) {
     // Get the address the physical page metadata refers to
     page_mem = (void *)((page - all_pages_array) * PAGE_SIZE);
 
-    // Zero out the page, big security flaw to not do this :)
+    // Zero out the page, just in case
     bzero(page_mem, PAGE_SIZE);
 
     return page_mem;
@@ -174,19 +174,24 @@ void kfree(void *ptr) {
     seg = ptr - sizeof(heap_segment_t);
     seg->is_allocated = 0;
 
-    // try to coalesce segements to the left
+    // try to coalesce segements to the left--what the fuck are you doing, Dharm?
     while(seg->prev != NULL && !seg->prev->is_allocated) {
+        // seg->prev->next = seg->next;
+        // seg->next->prev = seg->prev;
+        // seg->prev->segment_size += seg->segment_size;
+        // seg = seg->prev;
         seg->prev->next = seg->next;
-        seg->next->prev = seg->prev;
         seg->prev->segment_size += seg->segment_size;
         seg = seg->prev;
     }
-    // try to coalesce segments to the right
+    // try to coalesce segments to the right--again, I ask, what the fuck are you doing?
     while(seg->next != NULL && !seg->next->is_allocated) {
-        seg->next->next->prev = seg;
-        seg->next = seg->next->next;
+        // seg->next->next->prev = seg;
+        // seg->next = seg->next->next;
+        // seg->segment_size += seg->next->segment_size;
+        // seg = seg->next;
         seg->segment_size += seg->next->segment_size;
-        seg = seg->next;
+        seg->next = seg->next->next;
     }
     //uart_puts("Leaving kfree\r\n");
 }

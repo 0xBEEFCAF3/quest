@@ -363,6 +363,8 @@ u32 root_type, boot_device=0;
 void
 init (multiboot * pmb)
 {
+  /*
+
   int i, j, k, c, num_cpus;
   uint16 tss[NR_MODS];
   memory_map_t *mmap;
@@ -370,15 +372,20 @@ init (multiboot * pmb)
   Elf32_Phdr *pph;
   Elf32_Ehdr *pe;
   char brandstring[I386_CPUID_BRAND_STRING_LENGTH];
+  SMP stuff
+  */
 
   /* Initialize Bochs I/O debugging */
-  outw (0x8A00, 0x8A00);
+  // /outw (0x8A00, 0x8A00);
 
-  initialize_serial_port ();
+  // Maps to uart_init();
+  // initialize_serial_port ();
 
+
+  /* Framebuffer stuff
   pchVideo = (char *)KERN_SCR;
 
-  /* clear screen */
+  /* clear screen 
   for (i = 0; i < 80 * 25; i++) {
     pchVideo[i * 2] = ' ';
     pchVideo[i * 2 + 1] = 7;
@@ -386,10 +393,14 @@ init (multiboot * pmb)
 
   print ("\n\n\n");
 
+  
+  // Guess: Parsing GRUB commandline args
   com1_printf ("cmdline: %s\n", pmb->cmdline);
   root_type = parse_root_type (pmb->cmdline);
   com1_printf ("root_type=%d\n", root_type);
 
+
+  // Parsing cmdline args to figure out boot device.
   if (pmb->flags & 0x2) {
     multiboot_drive *d;
     boot_device = pmb->boot_device;
@@ -404,7 +415,9 @@ init (multiboot * pmb)
       }
     }
   }
-
+  */
+  // Getting Board rev using the mailbox peripheral. TODO: Fix
+  /*
   cpuid_get_brand_string (brandstring, I386_CPUID_BRAND_STRING_LENGTH);
   printf ("CPUID says: %s\n", brandstring);
   if (!cpuid_msr_support ())
@@ -419,18 +432,21 @@ init (multiboot * pmb)
      print ("Invariant TSC support detected\n");
      com1_printf ("Invariant TSC support detected\n");
   }
+  */
 
+ /*
+ // This stuff is handled in our mem_init()
   for (mmap = (memory_map_t *) pmb->mmap_addr;
        (uint32) mmap < pmb->mmap_addr + pmb->mmap_length;
        mmap = (memory_map_t *) ((uint32) mmap
-                                + mmap->size + 4 /*sizeof (mmap->size) */ )) {
+                                + mmap->size + 4 sizeof (mmap->size) )) {
 
-    /*
+    
      * Set mm_table bitmap entries to 1 for all pages of RAM that are free.
-     */
-    if (mmap->type == 1) {      /* Available RAM -- see 'info multiboot' */
+     
+    if (mmap->type == 1) {       Available RAM -- see 'info multiboot' 
       if (mmap->base_addr_high == 0x0) {
-        /* restrict to 4GB RAM */
+         restrict to 4GB RAM 
         for (i = 0; i < (mmap->length_low >> 12); i++)
           BITMAP_SET (mm_table, (mmap->base_addr_low >> 12) + i);
         limit = (mmap->base_addr_low >> 12) + i;
@@ -438,28 +454,30 @@ init (multiboot * pmb)
         if (limit > mm_limit)
           mm_limit = limit;
       }
-    }
+    }*/
+  // NB: Our implementation of the code above is not multiboot compliant because we haven't
+  // identified a bootloader for ARM that conforms to the multiboot spec.
   }
 
   /*
    * Clear bitmap entries for kernel and bootstrap memory areas,
    * so as not to use them in dynamic memory allocation.
-   */
+   
   for (i = 0;
        i <
        (uint32) &_bootstrap_pages + (uint32) &_readwrite_pages +
        (uint32) &_readonly_pages; i++)
-    BITMAP_CLR (mm_table, 256 + i);     /* Kernel starts at 256th physical frame
+    BITMAP_CLR (mm_table, 256 + i);      Kernel starts at 256th physical frame
                                          * See quest.ld
-                                         */
-
+                                         
+*/
   /*
    * --??-- Possible optimization is to free mm_table entries corresponding
    * to memory above mm_limit on machines with less physical memory than
    * table keeps track of -- currently 4GB.
    */
 
-  /* Here, clear mm_table entries for any loadable modules. */
+  /* Here, clear mm_table entries for any loadable modules. 
   for (i = 0; i < pmb->mods_count; i++) {
 
     pe = map_virtual_page ((uint32)pmb->mods_addr[i].pe | 3);
@@ -469,7 +487,7 @@ init (multiboot * pmb)
     for (j = 0; j < pe->e_phnum; j++) {
 
       if (pph->p_type == PT_LOAD) {
-        c = (pph->p_filesz + 0xFFF) >> 12;      /* #pages required for module */
+        c = (pph->p_filesz + 0xFFF) >> 12;      // #pages required for module 
 
         for (k = 0; k < c; k++)
           BITMAP_CLR (mm_table, (((uint32) pe + pph->p_offset) >> 12) + k);
@@ -478,35 +496,39 @@ init (multiboot * pmb)
     }
 
     unmap_virtual_page (pe);
-  }
+  } */
 
   /* Clear bitmap entries for first megabyte of RAM so we don't
    * overwrite BIOS tables we might be interested in later. */
+  /*
   for (i=0; i<256; i++)
     BITMAP_CLR (mm_table, i);
 
-  /* Reserve physical frame with GRUB multiboot structure */
-  BITMAP_CLR (mm_table, (u32) pmb >> 12);
+  // Reserve physical frame with GRUB multiboot structure 
+  BITMAP_CLR (mm_table, (u32) pmb >> 12); */
 
-#if 0
+
   /* Test that mm_table is setup correct */
-  for (i = 0; i < 2000; i++)
-    putchar (BITMAP_TST (mm_table, i) ? '1' : '0');
-  while (1);
-#endif
+  // for (i = 0; i < 2000; i++)
+  //   putchar (BITMAP_TST (mm_table, i) ? '1' : '0');
+  // while (1);
+
 
   /* Now safe to call alloc_phys_frame() as all free/allocated memory is
    *  marked in the mm_table
    */
-
+  // Handled in our code by interrupts_init();
   init_interrupt_handlers ();
 
   /* Initialise the programmable interrupt controller (PIC) */
-  init_pic ();
+  // Handled in raspi/interrupts.c
+  //init_pic ();
 
   /* Initialise the programmable interval timer (PIT) */
-  init_pit ();
+  // Handled in raspi/timer.c
+  //init_pit ();
 
+  // DHARM TODO: Implement this in our init.c
   pow2_init ();                 /* initialize power-of-2 memory allocator */
 
   /* Setup per-CPU area for bootstrap CPU */

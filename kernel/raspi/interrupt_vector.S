@@ -3,6 +3,13 @@
 .global move_exception_vector
 
 exception_vector:
+    // *NOT*     ldr pc, irq_handler
+    // because the -fpic flag to gcc, which means “Position Independent Code”, 
+    // Meaning if we were to write ldr pc, irq_handler,
+    // it would compile to ldr pc, [pc, #offset_to_irq_handler]. 
+    // It loads the address relative to its current position. 
+    // However, when we move the instuction to address 0, the handler would not be at the same relative offset,
+    // I think. I dunno. I'm delirious at this point and just want the pain to end.
     ldr pc, reset_handler_abs_addr
     ldr pc, undefined_instruction_handler_abs_addr
     ldr pc, software_interrupt_handler_abs_addr
@@ -21,7 +28,10 @@ irq_handler_abs_addr:                   .word irq_handler_asm_wrapper
 fast_irq_handler_abs_addr:              .word fast_irq_handler
 
 move_exception_vector:
+   // This part saves the registers above r3 that the function will be using.
+   // Calling C functions expect these registers be saved for them, so we must save them and restore them later.
     push    {r4, r5, r6, r7, r8, r9}
+    // Load the address of the exception vector into r0.
     ldr     r0, =exception_vector 
     mov     r1, #0x0000
     ldmia   r0!,{r2, r3, r4, r5, r6, r7, r8, r9}
@@ -31,8 +41,9 @@ move_exception_vector:
     pop     {r4, r5, r6, r7, r8, r9}
     blx     lr
 
+// This part borrowed entirely from USPI (https://github.com/rsta2/uspi/tree/master/sample)
 irq_handler_asm_wrapper:
-    sub     lr, lr, #4      // Adjsut return address
+    sub     lr, lr, #4      // Adjust return address
     srsdb   sp!, #0x13      // Save irq lr and irq spsp to supervisor stack, and save the resulting stack pointer as the current stack pointer
     cpsid   if, #0x13       // Switch to supervisor mode with interrupts disabled
     push    {r0-r3, r12, lr}// Save the caller save registers

@@ -4,6 +4,10 @@
 
 static timer_registers_t * timer_regs;
 
+// Why in the *absolute* FUCK does this not get called???
+// Update: Because you're an idiot.
+// See: https://github.com/raspberrypi/documentation/blob/master/hardware/raspberrypi/bcm2836/QA7_rev3.4.pdf
+// Update 2: You're an even bigger idiot. It's timer_iRq_handler, not timer_itq_handler :)
 static void timer_irq_handler(void) {
     uart_puts("timeout :)\n");
     timer_set(10000);

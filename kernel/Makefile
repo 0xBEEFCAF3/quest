@@ -8,6 +8,7 @@ ASMSOURCES = $(wildcard $(KER_SRC)/*.S)
 GRUB2 = grub2
 TFTPDIR=tftp
 LD = $(PREFIX)ld -marmelf
+RPIBOOT=rpiboot
 # ifeq ($(ARCH),armv7)
 # 	CC = gcc-4.8
 # else
@@ -68,11 +69,18 @@ PROGS = quest
 #	fs/tftp/fsys_tftp.o \
 #	kdb/i386-stub.o
 
+
+libuspi.a: $(OBJS)
+	@echo "  AR    $@"
+	@rm -f $@
+	@$(AR) cr $@ $(OBJS)
+
+
 OBJS =  boot/boot.o boot/init.o atag/atag.o \
 	drivers/uart/uart.o mem/mem.o gpu/gpu.o \
 	common/dstdlib.o \
 	raspi/mailbox.o raspi/interrupts.o raspi/timer.o raspi/process.o \
-	raspi/framebuffer.o raspi/interrupt_vector.o raspi/process_asm.o \
+	raspi/framebuffer.o raspi/interrupt_vector.o raspi/process_asm.o raspi/lock_asm.o \
 	util/kerio.o
 
 #OBJS += $(patsubst $(KER_SRC)/%.S, $(OBJ_DIR)/%.o, $(ASMSOURCES))
@@ -87,7 +95,6 @@ MAPFILES = $(patsubst %.o,%.map,$(OBJS))
 # ACPI_DEPS = $(patsubst %.c,%.d,$(ACPI_SRCS))
 
 ##################################################
-
 #LIBLWIP = lwip.a
 
 # LWIP_CFILES = \
@@ -137,7 +144,7 @@ all: $(PROGS)
 
 quest: $(OBJS) $(ACPI_OBJS) $(LWIP_OBJS)
 	rm -f quest
-	$(LD) -Map quest.map -T ldscripts/quest-arm.ld -o $@ $^ 
+	$(LD) -Map quest.map -T ldscripts/quest-arm.ld -L ./include -luspi -luspienv -o $@ $^ 
 
 %: %.o
 	$(LD) -o $@ $< -T ldscripts/module.ld -Map $@.map
@@ -226,7 +233,6 @@ endif
 	cp qemu.sh tftp/
 ##################################################
 # LWIP
-
 $(LIBLWIP): $(LWIP_OBJS)
 	$(AR) r $@ $(LWIP_OBJS)
 	ranlib $@
