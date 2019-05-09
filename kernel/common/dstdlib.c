@@ -50,6 +50,44 @@ __inline__ divmod_t divmod(uint32_t dividend, uint32_t divisor) {
     return res;
 }
 
+char *strncpy( char *s1, const char *s2, int length ) {
+
+  while( ( length-- ) && ( *s1++ = *s2++ ) );
+  
+  if( length < 0 )
+    *(s1-1) = '\0';
+  
+  return s1;
+}
+
+
+int strcmp(const char *s1, const char *s2) {
+
+  for( ; *s1 == *s2; s1++, s2++ )
+    if( *s1 == '\0' )
+      return 0;
+  return *s1 - *s2;
+
+}
+
+size_t strlen( const char *s ) {
+
+  int i;
+
+  i = 0;
+  while( s[i] != '\0' )
+    ++i;
+  return i;
+
+}
+
+void memset(void * dest, uint8_t c, int bytes) {
+    uint8_t * d = dest;
+    while (bytes--) {
+        *d++ = c;
+    }
+}
+
 void memcpy(void * dest, const void * src, int bytes) {
     //uart_puts("memcpy called;\r\n");
     char * d = dest;

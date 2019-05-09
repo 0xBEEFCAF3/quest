@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <atag/atag.h>
 #include <util/list.h>
+#include "types.h"
 #ifndef MEM_H
 #define MEM_H
 
@@ -28,5 +29,8 @@ void free_page(void * ptr);
 
 void * kmalloc(uint32_t bytes);
 void kfree(void *ptr);
+
+// Stubbed for now
+void *map_contiguous_virtual_pages (uint32 phys_frame, uint32 count);
 
 #endif

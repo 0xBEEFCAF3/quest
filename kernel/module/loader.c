@@ -20,7 +20,10 @@
 #include "mem/virtual.h"
 #include "module/header.h"
 #include "util/debug.h"
-#include "arch/i386.h"
+#include <common/dstdlib.h>
+#include <util/kerio.h>
+#include <mem/mem.h>
+//#include "arch/i386.h"
 
 #define DEBUG_MODULE
 
@@ -100,10 +103,10 @@ module_load_i (const int modi)
       return FALSE;
   if (mr[modi].mod->ops->init ()) {
     mr[modi].loaded = 1;
-    DLOG ("initialized module \"%s\"", mr[modi].mod->name);
+    serial_printf("initialized module \"%s\"", mr[modi].mod->name);
     return TRUE;
   } else {
-    DLOG ("failed to initialize module \"%s\"", mr[modi].mod->name);
+    serial_printf("failed to initialize module \"%s\"", mr[modi].mod->name);
     return FALSE;
   }
 }
@@ -113,17 +116,22 @@ extern bool
 module_load_all (void)
 {
   u32 count = 0, pages = 0, i;
-  u32 phys;
+  u32 phys = 0;
   modruntime_t *mr;
-  DLOG ("loading all modules");
+  serial_printf("loading all modules");
   const struct module **mod;
   for (mod = &_module_ptr_list; *mod; mod++) {
-    DLOG ("found name=\"%s\" desc: %s", (*mod)->name, (*mod)->desc);
+    serial_printf ("found name=\"%s\" desc: %s", (*mod)->name, (*mod)->desc);
     count++;
   }
   if (!count) return TRUE;
   pages = ((count * sizeof (modruntime_t) - 1) >> 12) + 1;
-  phys = alloc_phys_frames (pages);
+  int k = 0;
+  for(k = 0; k < phys; k++) {
+    alloc_page();
+  }
+  // TODO: Add alloc_phys_frames to mem
+  //phys = alloc_phys_frames (pages);
   if (phys == (u32) -1) goto abort;
   mr = map_contiguous_virtual_pages (phys | 3, pages);
   if (!mr) goto abort_phys;
@@ -140,7 +148,8 @@ module_load_all (void)
 
   return TRUE;
  abort_phys:
-  free_phys_frames (phys, pages);
+   free_page((void *)pages);
+  //free_phys_frames (phys, pages);
  abort:
   return FALSE;
 }

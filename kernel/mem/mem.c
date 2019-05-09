@@ -113,6 +113,45 @@ void free_page(void * ptr) {
     append_page_list(&free_pages, page);
 }
 
+void *
+map_contiguous_virtual_pages (uint32 phys_frame, uint32 count)
+{
+  // uint32 *page_table = (uint32 *) KERN_PGT;
+  // int i, j;
+  // void *va;
+
+  // if (count == 0)
+  //   return NULL;
+
+  // for (i = 0; i < 0x400 - count + 1; i++) {
+  //   if (!page_table[i]) {       /* Free page */
+  //     for (j = 0; j < count; j++) {
+  //       if (page_table[i + j]) {
+  //         /* Not enough pages in this window */
+  //         i = i + j;
+  //         goto keep_searching;
+  //       }
+  //     }
+
+  //     for (j = 0; j < count; j++) {
+  //       page_table[i + j] = phys_frame + j * 0x1000;
+  //     }
+
+  //     va = (char *) &_kernelstart + (i << 12);
+
+  //     /* Invalidate page in case it was cached in the TLB */
+  //     for (j = 0; j < count; j++) {
+  //       invalidate_page (va + j * 0x1000);
+  //     }
+
+  //     return va;
+  //   }
+  // keep_searching:
+  //   ;
+  // }
+
+  return NULL;                  /* Invalid address */
+}
 
 static void heap_init(uint32_t heap_start) {
    heap_segment_list_head = (heap_segment_t *) heap_start;

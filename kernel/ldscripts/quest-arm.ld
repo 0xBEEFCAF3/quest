@@ -1,5 +1,11 @@
 ENTRY(_start)
 OUTPUT_ARCH(arm)
+/*PHDRS {
+  physical PT_LOAD FILEHDR PHDRS;
+  virtualtext PT_LOAD;
+  virtualdata PT_LOAD;
+  virtualtext16 PT_LOAD;
+}*/
 SECTIONS
 {
     /* Starts at LOADER_ADDR. */
@@ -44,6 +50,18 @@ SECTIONS
     }
     . = ALIGN(4096); /* align to page size */
     __data_end = .;
+
+     /* Insert a read-only null-terminated array of pointers to modules */
+     /*# PRAGMA Need up */
+  /* Insert a read-only null-terminated array of pointers to constructors */
+/*    _percpu_ctor_list = .;
+   .ctors : AT ( ( LOADADDR (.rodata) + SIZEOF (.rodata) + 31 ) )
+              { *(.percpu.ctor); LONG(0) } : virtualtext*/
+
+  . = ALIGN(4096);
+     _module_ptr_list = .;
+/*     .moduleptrs : AT ( ( LOADADDR (.ctors) + SIZEOF (.ctors) + 31 ) )
+                   { *(.module.ptrs); LONG(0) } : virtualtext*/
  
     __bss_start = .;
     .bss :

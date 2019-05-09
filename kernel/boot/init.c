@@ -84,7 +84,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t r2)
     //create_kernel_thread(test, "TEST", 4);
     //uart_puts("Initializing keyboard:\r\n");
     //serial_printf("Result keyboard: %d\r\n", USPiInitialize());
-
+    { extern bool module_load_all (void); module_load_all (); }
     while (1) {
         // gets(buf,256);
         // puts(buf);

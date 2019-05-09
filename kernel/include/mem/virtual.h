@@ -27,7 +27,7 @@
 #define BIGPAGE_SIZE_BITS 22
 #define BIGPAGE_SIZE (1<<BIGPAGE_SIZE_BITS)
 #define PAGE_SIZE_BITS 12
-#define PAGE_SIZE (1<<PAGE_SIZE_BITS)
+//#define PAGE_SIZE (1<<PAGE_SIZE_BITS)
 #define FRAMENUM_TO_FRAME(x) ((frame_t) ((x) << PAGE_SIZE_BITS))
 #define FRAME_TO_FRAMENUM(x) ((framenum_t) ((x) >> PAGE_SIZE_BITS))
 #define BIGFRAMENUM_TO_FRAME(x) ((frame_t) ((x) << BIGPAGE_SIZE_BITS))

@@ -81,7 +81,7 @@ OBJS =  boot/boot.o boot/init.o atag/atag.o \
 	common/dstdlib.o \
 	raspi/mailbox.o raspi/interrupts.o raspi/timer.o raspi/process.o \
 	raspi/framebuffer.o raspi/interrupt_vector.o raspi/process_asm.o raspi/lock_asm.o \
-	util/kerio.o
+	util/kerio.o module/loader.o
 
 #OBJS += $(patsubst $(KER_SRC)/%.S, $(OBJ_DIR)/%.o, $(ASMSOURCES))
 CFILES = $(patsubst %.o,%.c,$(OBJS))
